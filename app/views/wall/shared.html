@@ -1,0 +1,188 @@
+<div class="bs-example" data-example-id="simple-nav-justified">
+    <ul class="nav nav-justified nav-tabs">
+        <li role="presentation" class="active tab-active color-white">
+            <a class="color-white" href="/#/profile">MURO FCh</a>
+        </li>
+    </ul>
+</div>
+<div id="postear" class="row text-center"></div>
+<div id="row">
+    <div class="row row-post">
+        <form id="fileupload" action="/upload" method="POST" enctype="multipart/form-data" 
+              data-ng-controller="UploaderController"
+              data-file-upload="options"
+              data-ng-class="{'fileupload-processing': processing()}">
+            <div class="col-md-12 col-xs-12 no-padding">
+                <ul class="nav nav-tabs text-center label-post">
+                    <!--
+                    <li role="presentation">
+                        <span class="btn btn-link btn-sm btn-block" ng-click="actionSetText()">
+                            <i class="fa fa-font fa-2x"></i>
+                            <br/> Texto
+                        </span>
+                    </li>
+                    -->
+                    <li role="presentation">
+                        <span class="btn btn-link btn-sm btn-block fileinput-button" ng-click="actionSetImage()">
+                            <i class="fa fa-refresh fa-spin fa-2x" ng-if="active() > 0"></i>
+                            <i class="fa fa-camera fa-2x" ng-if="active() == 0"></i>
+                            <br/> Imagen
+                            <input type="file" name="files[]" multiple ng-disabled="disabled">
+                        </span>
+                    </li>
+                    <li role="presentation">
+                        <span class="btn btn-link btn-sm btn-block" ng-click="actionSetVideo()">
+                            <i class="fa fa-video-camera fa-2x"></i>
+                            <br/>Video
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </form>
+        <div class="row">
+            <div class="form-group">
+                <textarea ng-model="postNew.text" class="form-control" rows="4" cols="50" placeholder="¿Que te gustaria compartir?"></textarea>
+            </div>
+            <div class="form-group" ng-if="showVideo">
+                <input type="text" class="form-control" ng-model="youtube.url" placeholder="https://www.youtube.com/watch?v=y573MTx0v20" />
+                <br>
+                <youtube-video ng-if="youtube.url != ''" video-url="youtube.url" player-width="'100%'" player-height="'300px'"></youtube-video>
+            </div>
+            <div class="form-group" id="box_wall_image">
+                <div class="pull-left btn btn-default" ng-repeat="(key, file) in aryFiles" style="height: 80px">
+                    <img ng-src="{{file.smallUrl}}" class="ng-image-uploaded" style="max-width: 100px; max-height: 70px" alt="">
+                    <button type="button" class="btn btn-default" ng-click="removeFile(key)">
+                        <span class="glyphicon glyphicon-remove-circle"></span>
+                    </button>
+                </div>
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <button class="btn btn-warning btn-buscar pull-right" ng-click="actionCheckPost()">Publicar</button>
+            </div>
+        </div>
+    </div>
+    <div class="row row-post row-comentario" ng-repeat="wallPost in aryWallPost">
+        <div class="row">
+            <div class="col-md-2 col-sm-3 hidden-xs">
+                <div class="avatar center-block " ng-if="wallPost.location == 'my_wall'">
+                    <img ng-src="{{wallPost.ref_post.ref_user.google_img}}" class="img-responsive img-circle">
+                </div>
+                <div class="avatar center-block " ng-if="wallPost.location == 'other_wall'">
+                    <img ng-src="{{wallPost.ref_post.ref_user.google_img}}" class="img-responsive img-circle">
+                </div>
+                <div class="avatar center-block " ng-if="wallPost.location == 'share'">
+                    <img ng-src="{{wallPost.ref_profile.ref_image.image_original}}" class="img-responsive img-circle">
+                </div>
+            </div>
+            <div class="col-md-10 col-sm-9 col-xs-12 no-padding">
+                <div class="row user-profile" ng-if="wallPost.location == 'my_wall'">
+                    <a href="/#/profile/{{wallPost.ref_profile._id}}">
+                        {{wallPost.ref_profile.first_name}} 
+                        <strong>{{wallPost.ref_profile.last_name}}</strong>
+                    </a> |
+                    <i class="fa fa-clock-o"></i> 
+                    <small>{{wallPost.ref_post.date_updated | date:'medium'}}</small>
+                </div>
+                <div class="row user-profile" ng-if="wallPost.location == 'other_wall'">
+                    <a href="/#/profile/{{wallPost.ref_profile._id}}">
+                        {{wallPost.ref_profile.first_name}} 
+                        <strong>{{wallPost.ref_profile.last_name}}</strong>
+                    </a>
+                    <i class="fa fa-caret-right"></i>
+                    escribió en el muro de 
+                    <a href="/#/profile/{{wallPost.ref_profile_target._id}}">
+                        {{wallPost.ref_profile_target.first_name}} 
+                        <strong>{{wallPost.ref_profile_target.last_name}}</strong>
+                    </a>
+                    |
+                    <i class="fa fa-clock-o"></i> 
+                    <small>{{wallPost.ref_post.date_updated | date:'medium'}}</small>
+                </div>
+                <div class="row user-profile" ng-if="wallPost.location == 'share'">
+
+                    <a href="/#/profile/{{wallPost.ref_profile._id}}">
+                        {{wallPost.ref_profile.first_name}} 
+                        <strong>{{wallPost.ref_profile.last_name}}</strong>
+                    </a>
+                    <i class="fa fa-share-alt-square"></i> compartió un articulo de 
+                    <a href="/#/profile/{{wallPost.ref_profile_target._id}}">
+                        {{wallPost.ref_profile_target.first_name}} 
+                        <strong>{{wallPost.ref_profile_target.last_name}}</strong>
+                    </a>
+                    |
+                    <i class="fa fa-clock-o"></i> 
+                    <small>{{wallPost.ref_post.date_updated | date:'medium'}}</small>
+                </div>
+                <div class="row post-box-muro"> 
+                    <div class="row post-text">
+                        <div ng-bind-html="wallPost.ref_post.text | htmlEncode"></div>
+                        
+                        <youtube-video ng-if="wallPost.ref_post.ref_video != ''" video-url="wallPost.ref_post.ref_video.url" player-width="'100%'" player-height="'300px'"></youtube-video>
+                    </div>
+                    <div class="row swipeboxExample">
+                        <a ng-repeat="postImg in wallPost.ref_post.ref_image" ng-href="{{postImg.image_original}}" target="_blank">
+                            <img ng-src="{{postImg.image_medium}}" class="img-responsive ng-justify-gallery">
+                        </a>
+                    </div> 
+                </div>
+                <div class="col-md-12 col-xs-12 text-btn-post">
+                    <ul class="nav nav-tabs  ">
+                        <li role="presentation">
+                            <button class="btn btn-link btn-sm btn-block">
+                                <i class="fa fa-comment fa-2x"></i>
+                                {{wallPost.ref_post.ref_comment.length > 0 ? wallPost.ref_post.ref_comment.length : ''}}
+                            </button>
+                        </li>
+                        <li role="presentation">
+                            <button class="btn btn-link btn-sm btn-block" ng-click="actionShare(wallPost._id)">
+                                <i class="fa fa-share-alt fa-2x"></i> 
+
+                            </button>
+                        </li>
+                        <li role="presentation">
+                            <button class="btn btn-link btn-sm btn-block" ng-click="actionAddLike(wallPost.ref_post)">
+                                <i class="fa fa-thumbs-up fa-2x"></i>
+                                {{wallPost.ref_post.ref_post_like.length > 0 ? wallPost.ref_post.ref_post_like.length : ''}}
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-12 col-xs-12 subcomments" ng-repeat="comment in wallPost.ref_post.ref_comment">
+                    <div class="col-md-2 col-xs-3  ">
+                        <div class="avatar center-block">
+                            <img ng-src="{{comment.ref_user.google_img}}" class="img-responsive img-circle">
+                        </div>
+                    </div>
+                    <div class="col-md-10 col-xs-9 padding-subcomment">
+                        <div class="row user-profile">
+                            {{comment.ref_user.google_first_name}} 
+                            <strong>{{comment.ref_user.google_last_name}}</strong> | 
+                            <i class="fa fa-clock-o"></i> 
+                            <small>{{comment.date_created | date:'medium'}}</small>
+                        </div>
+                        <div class="row post-comment">{{comment.text}}</div>
+                    </div>
+                </div>
+                <div class="row post-subcomment">
+                    <div class="col-md-8">
+                        <form role="form">
+                            <div class="form-group">
+                                <input ng-model="commentNew[wallPost.ref_post._id].text" ng-enter="actionAddComment(wallPost.ref_post, commentNew[wallPost.ref_post._id])" class="form-control" placeholder="Escribe comentario" type="text" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-block btn-warning btn-orange" ng-click="actionAddComment(wallPost.ref_post, commentNew[wallPost.ref_post._id])">Comentar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="infiniteScroll == true" infinite-scroll="actionLoadMore()" infinite-scroll-distance="1"></div>
+    <a ng-if="infiniteScroll != true" href="/#/profile" class="btn btn-warning btn-buscar pull-right">
+        Ver mas posts <i class="fa fa-search-plus"></i>
+    </a>
+</div>

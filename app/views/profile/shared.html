@@ -1,0 +1,83 @@
+<div class="row margin-avatar ">
+    <div class="avatar center-block img-circle">
+        <a href="/#/profile/{{profile._id}}">
+            <img ng-src="{{profile.ref_image.image_original}}" class="img-responsive">
+        </a>
+    </div>
+</div>
+<div class="row datos-perfil ">
+    <div class="row margin-row">
+        <div class="col-md-1 col-xs-1 "><i class="fa fa-user"></i></div>
+        <div class="col-md-8 col-xs-9">{{profile.full_name}}</div>
+    </div>
+    <div class="row margin-row">
+        <div class="col-md-1 col-xs-1"><i class="fa fa-map-marker"></i></div>
+        <div class="col-md-8 col-xs-8">{{profile.location}}</div>
+    </div>
+    <div class="row margin-row">
+        <div class="col-md-1 col-xs-1"><i class="fa fa-birthday-cake"></i></div>
+        <div class="col-md-9 col-xs-9">{{profile.birthday}}</div>
+    </div>
+    <div class="row margin-row">
+        <div class="col-md-1 col-xs-1"><i class="fa fa-pencil"></i></div>
+        <div class="col-md-9 col-xs-9 ">{{profile.position}}</div>
+    </div>
+    <div class="row margin-row hidden-sm">
+        <div class="col-md-1 col-xs-1"><i class="fa fa-facebook"></i></div>
+        <div class="col-md-9 col-xs-9 url">{{profile.facebook}}</div>
+    </div>
+</div>
+<br/>
+<div class="row margin-row ">
+    <div class="row margin-row datos-edit">
+        <div class="col-md-1 col-xs-1"><i class="fa fa-user"></i></div>
+        <div class="col-md-8 col-xs-8">Algo sobre mi</div>
+    </div>
+    <div class="col-md-12 col-xs-12 sidebar-about margin-row">
+        {{profile.about_me}}
+    </div>
+    <div class="col-md-12 col-xs-12 datos-edit" ng-if="profile._id == myProfile._id">
+        <i class="fa fa-pencil-square-o"></i> Editar perfil
+    </div>
+</div>
+<div class="row" id="friends">
+    <div class="row margin-amigos-top">
+        <div class="col-md-6 col-xs-6 ver-amigos-main">
+            <a href="/#/friend/{{profile._id}}" ng-if="profile.total_friend == 0">Amigos</a>
+            <a href="/#/friend/{{profile._id}}" ng-if="profile.total_friend > 0">Amigos ({{profile.total_friend}})</a>
+        </div>
+        <div class="col-md-6 col-xs-6 ver-amigos">
+            <a href="/#/friend/{{profile._id}}">Ver amigos</a>
+        </div>
+    </div>
+    <div class="height-well margin-amigos-top">
+        <div class="row">
+            <div ng-repeat="friend in profile.ref_profile_friend" class="col-md-2 col-xs-2 padding-amigos no-padding">
+                <a href="/#/profile/{{friend._id}}">
+                    <img ng-src="{{friend.ref_image.image_original}}" title="{{friend.full_name}}" width="40">
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row" id="grupos" ng-if="profile.ref_group.length > 0">
+    <div class="row margin-amigos-top">
+        <div class="col-md-6 col-xs-6 ver-amigos-main">
+            <a href="/#/group">
+                Grupos ({{profile.total_group}})
+            </a>
+        </div>
+        <div class="col-md-6 col-xs-6 ver-amigos"><a href="/#/group">Ver todos los grupos</a></div>
+    </div>
+    <div class="height-well margin-amigos-top">
+        <div class="row">
+            <div ng-repeat="group in profile.ref_group" class="col-md-2 col-xs-2 padding-amigos no-padding">
+                <a href="/#/group/{{group._id}}">
+                    <img ng-src="{{group.ref_image.image_small}}" title="{{group.title}}" width="40">
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>

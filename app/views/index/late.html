@@ -1,0 +1,379 @@
+<div class="container">
+    <div class="col-md-3 col-xs-12 col_left">
+        <div id="perfil" class="hidden-sm row">
+            <div class="well profile perfil-caja">
+                <span class="cover">
+                    <img src="img/profile.png" class="img-responsive">
+                </span>
+                <div class="col-sm-12 col-xs-12 text-center">
+                    <div class="">
+                        <a href="/#/profile">
+                            <img ng-src="{{profile.ref_image.image_original}}" alt="" class="foto-perfil">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 text-center">
+                    <span class="name-perfil">{{profile.full_name}}</span>
+                    <p class="subtitulo-cargo">{{profile.position}}</p>
+                </div>
+                <div class="col-xs-12 divider text-center no-padding">
+                    <div class="col-xs-4 col-sm-4 emphasis-amigos">
+                        <a href="/#/friend">
+                            <span class="number-perfil">{{profile.total_friend}}</span>
+                            <p>
+                                <small class="small-usuario">Amigos</small>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 emphasis-grupos">
+                        <span class="number-perfil">{{profile.total_group}}</span>
+                        <p>
+                            <small class="small-usuario">Grupos</small>
+                        </p>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 emphasis-amigos">
+                        <span class="number-perfil">{{profile.total_post}}</span>
+                        <p>
+                            <small class="small-usuario">Posts</small>
+                        </p>
+                    </div>
+                    <!--
+                    <div class="col-xs-4 col-sm-4 emphasis-comments">
+                        <span class="number-perfil">{{profile.total_comment}}</span>
+                        <p>
+                            <small class="small-usuario">Comentarios</small>
+                        </p>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+        <div class="row accordian-max">
+            <ul id="accordion" class="accordion hidden-sm hidden-xs">
+                <li>
+                    <div class="link title-accordeon">Tu FCH</div>
+                </li>
+                <li>
+                    <div class="link">
+                        <i class="fa fa-coffee"></i>
+                        <a href="#">Pide tu colación</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="link">
+                        <i class="fa fa-question-circle"></i>
+                        <a href="#">Mesa de ayuda</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="link">
+                        <i class="fa fa-file-text-o"></i>Formularios
+                        <i class="fa fa-chevron-down"></i>
+                    </div>
+                    <ul class="submenu">
+                        <li>
+                            <a href="">Formulario 1</a>
+                        </li>
+                        <li>
+                            <a href="">Formulario 2</a>
+                        </li>
+                        <li>
+                            <a href="">Formulario 3</a>
+                        </li>
+                        <li>
+                            <a href="">Formulario 4</a>
+                        </li>
+                        <li>
+                            <a href="">Formulario 5</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="link">
+                        <i class="fa fa-wrench"></i>Áreas de Soporte
+                        <i class="fa fa-chevron-down"></i>
+                    </div>
+                    <ul class="submenu">
+                        <li>
+                            <a href="">Soporte 1</a>
+                        </li>
+                        <li>
+                            <a href="">Soporte 2</a>
+                        </li>
+                        <li>
+                            <a href="">Soporte 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="link">
+                        <i class="fa fa-cog"></i>
+                        <a href="#">Herramientas</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="link">
+                        <i class="fa fa-eye"></i>Más Vistos
+                        <i class="fa fa-chevron-down"></i>
+                    </div>
+                    <ul class="submenu">
+                        <li>
+                            <a href="">Formulario de vacaciones</a>
+                        </li>
+                        <li>
+                            <a href="">Formularios SAP</a>
+                        </li>
+                        <li>
+                            <a href="">Contratos</a>
+                        </li>
+                        <li>
+                            <a href=""> Formulario Seguro Salud</a>
+                        </li>
+                        <li>
+                            <a href=""> Solicitud de Egreso</a>
+                        </li>
+                        <li>
+                            <a href="">Rendiciones de Gasto</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="link">
+                        <i class="fa fa-car"></i>
+                        <a href="#">Aventones</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="late" class="row">
+            <div class="box-upper col-md-12 hidden-sm hidden-xs">
+                <a href=""><img src="img\latelogo.png" class="center-block img-responsive"></a>
+            </div>
+            <div class="box-bottom col-md-12 hidden-sm hidden-xs text-caluga">
+                <a href="">LATE</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="box-upper col-md-12 hidden-sm hidden-xs">
+                <a href=""><img src="img\centralogo.png" class="center-block img-responsive"></a>
+            </div>
+            <div class="box-bottom col-md-12 hidden-sm hidden-xs text-caluga">
+                <a href="">PARTAMOS POR CASA</a>
+            </div>
+        </div>
+        <div class="hidden-sm hidden-xs row">
+            <div class="box-upper col-md-12 hidden-sm hidden-xs">
+                <a href=""><img src="img\cdclogo.png" class="center-block img-responsive"></a>
+            </div>
+            <div class="col-md-12 box-bottom text-caluga">
+                <a href="">CENTRAL DEL CONOCIMIENTO</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 margin-top-cont">
+
+        <div class="row" style="margin-bottom: 10px;">
+            <img src="img/latelogo.png" class="img-responsive center-block">
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <small class="fecha-late">06 de Marzo de 2014</small>
+                <h1 class="tit-late">Titulo de noticia para esta sección</h1>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+        <div class="row hidden-xs">
+            <div class="col-md-12 separador-border">
+                <div class="col-md-6 autor"><span>por</span> <strong>AUTOR NOTICIA</strong></div>
+                <div class="col-md-3"><a class="accion-news " href="#"><i class="fa fa-thumbs-up"></i> ME GUSTA  </a> <span class="badge">4</span></div>
+                <div class="col-md-3"><a class="accion-news" href="#"><i class="fa fa-print"></i> IMPRIMIR</a></div>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-12 cuerpo-news">
+                <p>  Lorem ipsum dolor sit amet, in unum oblique disputationi mel, ut officiis percipit consequuntur his, ridens ceteros recusabo id per. Recusabo lobortis persecuti in mea. At per enim assum laoreet, prima postulant ius ut. Pri affert qualisque adversarium in. Doming necessitatibus ea est.
+                    Nec sapientem reprimique ad, ad sed labore tibique principes. Vel ne altera pertinax, has eruditi platonem ne. Eius epicurei similique ad mei. Eu vis unum choro virtute, cum et quas ornatus necessitatibus. Ut pro simul graecis facilisi. Veritus pertinax interesset pri in, duo at solum affert, per case liberavisse eu.</p>
+
+                <p>Te labore delicata percipitur per, has ad odio putant, et everti vituperata pri. Ut iusto inimicus mea. Est no tota virtute gubergren. Vis cu omnes debitis torquatos, pri te eirmod audiam atomorum. Augue fabellas usu an. Et iusto salutandi vis.
+                    Neglegentur accommodare vis eu, eum no commodo integre. Nam ea elit tollit oporteat. Graeco torquatos efficiendi ut his. Ne nam agam libris delenit, ea adhuc debitis sea, ex qui iisque tacimates. Et docendi alienum dissentiunt sed, mel dictas splendide maiestatis no.</p>
+
+                <p>Vix ei habeo tamquam signiferumque, ex porro audire has, perfecto contentiones ut sea. Ad pri populo fabulas urbanitas, illum aeque blandit vis ea, congue eleifend per no. Laoreet senserit explicari ad duo, eirmod intellegat sententiae ad est. Qui rebum clita dissentias ex, ullum causae definitiones ut per. No qui omnis facete petentium, te vel impedit invidunt phaedrum.</p>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="col-md-3 col-sm-3 hidden-xs no-padding ">
+
+
+        <div class="row" style="margin-top: 5px;">
+            <div class="col-md-12">
+                <div class="panel panel-primary no-radius">
+                    <div class="panel-heading no-radius">
+                        <h3 class="panel-title">Otro artículos <i class="fa fa-newspaper-o pull-right icon-panel"></i> </h3>
+                    </div>
+                </div>
+                <div class="well padding-relacionadas well-rel">
+                    <div class="media">
+                        <a href=""></a>
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle" src="http://placehold.it/40x40">
+                        </a>
+                        <div class="media-body">
+                            <a  href="#"> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius </p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="well padding-relacionadas well-rel">
+                    <div class="media">
+                        <a href=""></a>
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle" src="http://placehold.it/40x40">
+                        </a>
+                        <div class="media-body">
+                            <a  href="#"> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius </p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="well padding-relacionadas well-rel">
+                    <div class="media">
+                        <a href=""></a>
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle" src="http://placehold.it/40x40">
+                        </a>
+                        <div class="media-body">
+                            <a  href="#"> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius </p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="well padding-relacionadas well-rel">
+                    <div class="media">
+                        <a href=""></a>
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle" src="http://placehold.it/40x40">
+                        </a>
+                        <div class="media-body">
+                            <a  href="#"> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius </p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row comment-noticia">
+            <div class="col-md-12">
+                <div class="panel panel-primary no-radius">
+                    <div class="panel-heading no-radius">
+                        <h3 class="panel-title">Comenta este artículo <i class="fa fa-comment pull-right icon-panel"></i> </h3>
+                    </div>
+                </div>
+
+                <div class="panel panel-default widget">                         
+                    <div class="well text-center well-comment">
+                        <div class="input-group">
+                            <input type="text" id="userComment" class="form-control input-sm chat-input" placeholder="Escribe tu comentario" />
+                            <span class="input-group-btn" onclick="addComment()">     
+                                <a href="#" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-comment"></span> Comentar</a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="input-group">                             
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-10 col-md-11">
+                                        <div>
+                                            <div class="mic-info">
+                                                <a href="#">León Ulloa Ferro</a> |  4 de Marzo de 2015
+                                            </div>
+                                        </div>
+                                        <div class="comment-text">
+                                            Esta caja es de comentario, no un chat. Felipe me debes un café. Adios.
+                                        </div>
+                                        <div class="action">
+                                            <button type="button" class="btn btn-primary btn-xs" title="Me Gusta">
+                                                <i class="fa fa-thumbs-up"></i> 
+                                            </button>
+                                            <span class="badge">4</span>
+                                            |
+                                            <button type="button" class="btn btn-danger btn-xs" title="Reportar">
+                                                <i class="fa fa-exclamation-triangle"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-10 col-md-11">
+                                        <div>
+                                            <div class="mic-info">
+                                                <a href="#">León Ulloa Ferro</a> |  4 de Marzo de 2015
+                                            </div>
+                                        </div>
+                                        <div class="comment-text">
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+                                        </div>
+                                        <div class="action">
+                                            <button type="button" class="btn btn-primary btn-xs" title="Me Gusta">
+                                                <i class="fa fa-thumbs-up"></i> 
+                                            </button>
+                                            <span class="badge"></span>
+                                            |
+                                            <button type="button" class="btn btn-danger btn-xs" title="Reportar">
+                                                <i class="fa fa-exclamation-triangle"></i>
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-10 col-md-11">
+                                        <div>
+                                            <div class="mic-info">
+                                                <a href="#">León Ulloa Ferro</a> |  4 de Marzo de 2015
+                                            </div>
+                                        </div>
+                                        <div class="comment-text">
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim. Lorem ipsum dolor sit amet-
+                                        </div>
+                                        <div class="action">
+                                            <button type="button" class="btn btn-primary btn-xs" title="Me Gusta">
+                                                <i class="fa fa-thumbs-up"></i> 
+                                            </button>
+                                            <span class="badge"></span>
+                                            |
+                                            <button type="button" class="btn btn-danger btn-xs" title="Reportar">
+                                                <i class="fa fa-exclamation-triangle"></i>
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <a href="#" class="btn btn-warning btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> Ver más comentarios</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

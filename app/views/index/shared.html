@@ -1,0 +1,77 @@
+<div id="perfil" class="hidden-sm row">
+    <div class="well profile perfil-caja">
+        <span class="cover">
+            <img src="img/profile.png" class="img-responsive">
+        </span>
+        <div class="col-sm-12 col-xs-12 text-center">
+            <div class="">
+                <a href="/#/profile">
+                    <img ng-src="{{profile.ref_image.image_original}}" alt="" class="foto-perfil">
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 text-center">
+            <span class="name-perfil">{{profile.full_name}}</span>
+            <p class="subtitulo-cargo">{{profile.position}}</p>
+        </div>
+        <div class="col-xs-12 divider text-center no-padding">
+            <div class="col-xs-4 col-sm-4 emphasis-amigos">
+                <a href="/#/friend">
+                    <span class="number-perfil">{{profile.total_friend}}</span>
+                    <p>
+                        <small class="small-usuario">Amigos</small>
+                    </p>
+                </a>
+            </div>
+            <div class="col-xs-4 col-sm-4 emphasis-grupos">
+                <a href="/#/group">
+                    <span class="number-perfil">{{profile.total_group}}</span>
+                    <p>
+                        <small class="small-usuario">Grupos</small>
+                    </p>
+                </a>
+            </div>
+            <div class="col-xs-4 col-sm-4 emphasis-amigos">
+                <span class="number-perfil">{{profile.total_post}}</span>
+                <p>
+                    <small class="small-usuario">Posts</small>
+                </p>
+            </div>
+            <!--
+            <div class="col-xs-4 col-sm-4 emphasis-comments">
+                <span class="number-perfil">{{profile.total_comment}}</span>
+                <p>
+                    <small class="small-usuario">Comentarios</small>
+                </p>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+<div class="row accordian-max">
+    <ul id="accordion" class="accordion hidden-sm hidden-xs">
+        <li>
+            <div class="link title-accordeon">Tu FCh</div>
+        </li>
+        <li ng-repeat="menuHome in aryMenuHome">
+            <a class="link" ng-href="{{menuHome.url}}" ng-if="menuHome.url_external" target="_blank">
+                <i class="{{menuHome.font_awsome_icon}}"></i>
+                {{menuHome.title}}
+            </a>
+            <a class="link" ng-href="{{menuHome.url}}" ng-if="!menuHome.url_external">
+                <i class="{{menuHome.font_awsome_icon}}"></i>
+                {{menuHome.title}}
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="late" class="row" ng-repeat="banner in aryBanner">
+    <div class="box-upper col-md-12 hidden-sm hidden-xs">
+        <a ng-href="{{banner.url}}">
+            <img ng-src="{{banner.ref_image.image_original}}" width="200" height="90" class="center-block">
+        </a>
+    </div>
+    <div class="box-bottom col-md-12 hidden-sm hidden-xs text-caluga">
+        <a ng-href="{{banner.url}}">{{banner.title}}</a>
+    </div>
+</div>

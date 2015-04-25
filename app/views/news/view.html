@@ -1,0 +1,84 @@
+<div class="container">
+    <div ng-controller="IndexShared" ng-include="'index/shared'" class="col-md-3 col-xs-12 col_left"></div>
+
+    <div class="col-md-8 col-sm-7 col-xs-12 no-padding">
+        <div class="row muro-pattern no-padding">
+            <div class="elmuro">Noticias</div>
+        </div>
+        <div class="row margin-news ">
+            <div class="row breadcrumb-news ">
+                <div class="col-md-6 col-sm-6 titulo-news-interior">{{page.title}}</div>
+                <div class="col-md-6 col-sm-6 ">
+                    <ol class="breadcrumb ">
+                        <li><a class="bread-color" href="/#/home">Home</a></li>
+
+                    </ol>
+                </div>
+            </div>
+            <div class="row margin-news">
+                <div class="col-md-12 col-sm-12 padding-main-pic"><img src="{{page.ref_image.image_original}}" class="img-responsive"></div>
+                <div class="col-md-12 col-sm-12 bajada-news-main">
+                    <div ng-bind-html="page.text | htmlEncode"></div>
+                </div>
+                 <div><br/></div>
+                <div class="panel-body no-padding no-padding-top ">
+                    <ul class="list-group">
+                        <li ng-repeat="comment in page.ref_comment" class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-10 col-md-11">
+                                    <div>
+                                        <div class="mic-info">
+                                            <a href="#">{{comment.ref_profile.full_name}}</a> |  {{comment.date_created | date:'medium'}}
+                                        </div>
+                                    </div>
+                                    <div class="comment-text">
+                                        {{comment.text}}
+                                    </div>
+                                    <div class="action hide">
+                                        <button type="button" class="btn btn-primary btn-xs" title="Me Gusta">
+                                            <i class="fa fa-thumbs-up"></i> 
+                                        </button>
+                                        <span class="badge">4</span>
+                                        |
+                                        <button type="button" class="btn btn-danger btn-xs" title="Reportar">
+                                            <i class="fa fa-exclamation-triangle"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!--
+                    <a href="#" class="btn btn-warning btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> Ver más comentarios</a>
+                    -->
+                </div>
+                <div class="row comment-noticia">
+                    <div class="col-md-12">
+                        <div class="panel panel-primary no-radius caja-late">
+                            <div class="panel-heading no-radius caja-late">
+                                <h3 class="panel-title">Comenta esta noticia <i class="fa fa-comment pull-right icon-panel"></i> </h3>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default widget">                         
+                            <div class="well text-center well-comment">
+                                <div class="row">
+                                    <textarea class="form-control" ng-model="newComment.text" type="text" id="userComment"></textarea>
+                                </div>
+                                <div class="row">
+                                    <span class="btn-block" ng-click="actionAddComment()">
+                                        <button type="button"  class="btn btn-block btn-danger">
+                                            <span class="glyphicon glyphicon-comment"></span> Comentar
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="input-group">                             
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

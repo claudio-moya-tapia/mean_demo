@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html data-ng-app="movieApp">
+    <head>
+        <meta charset="utf-8">
+        <title>MEAN Generator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="container">
+            <header class="row">
+                <div class="col-md-6">
+                    <h3>
+                        <span class="glyphicon glyphicon-leaf"></span>
+                        MEAN Scaffolding Generator
+                    </h3>
+                </div>
+                <div class="col-md-6">
+                    <a href="http://www.rayalab.cl" target="_blank">
+                        <img src="http://www.rayalab.cl/img/rayalab.png" class="pull-right" />
+                    </a>
+                </div>
+            </header>
+            <div class="form-group">
+                <div class="alert alert-danger hidden" id="msg_danger"></div>
+                <div class="alert alert-success hidden" id="msg_create"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <h4>Main Class</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="mainClass" value="" />
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                Mongoose Models <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right" id="mainClassList" role="menu">
+
+                            </ul>
+                        </div>
+                    </div>
+                    <br>
+                    <button class="btn btn-default newClass">
+                        <span class="glyphicon glyphicon-file"></span>
+                        New
+                    </button>
+                    <button class="btn btn-success create">
+                        <span class="glyphicon glyphicon-save"></span>
+                        Save
+                    </button>
+                    <a href="/#/" class="btn btn-info" id="url" target="_blank">
+                        <span class="glyphicon glyphicon-link"></span>
+                        Check
+                    </a>
+                    <button class="btn btn-warning atribute_add">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        Atribute
+                    </button>
+                </div>
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h4>NodeJS</h4>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="createOptions[]" value="model" checked="checked">
+                                    Mongoose Model
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="createOptions[]" value="api" checked="checked" /> 
+                                    API Controller
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="createOptions[]" value="ctrl" checked="checked" /> 
+                                    Web Controller
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>HTML</h4>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="createOptions[]" value="htmlList" checked="checked" /> 
+                                    HTML List
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="createOptions[]" value="htmlNew" checked="checked" /> 
+                                    HTML New
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="createOptions[]" value="htmlEdit" checked="checked" /> 
+                                    HTML Edit
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="createOptions[]" value="htmlView" checked="checked" /> 
+                                    HTML View
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>AngularJS</h4>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="createOptions[]" value="angularController" checked="checked" /> 
+                                    Angular Controller
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="createOptions[]" value="angularFactory" checked="checked" /> 
+                                    Angular Factory
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="form-group atribute">
+                
+            </div>
+            <div class="form-group hidden">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Mongoose Model</label>
+                        <small>app/models/</small>
+                        <textarea class="form-control" id="model" rows="10"></textarea>
+                    </div>
+                    <div class="col-md-4">
+                        <label>API Controller</label>
+                        <small>app/controllers/</small>
+                        <textarea class="form-control" id="api" rows="10"></textarea>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Web Controller</label>
+                        <small>app/controllers/</small>
+                        <textarea class="form-control" id="ctrl" rows="10"></textarea>
+                    </div>                
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Html List</label>
+                        <small>app/views/</small>
+                        <textarea class="form-control" id="htmlList" rows="10"></textarea>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Html New</label>
+                        <small>app/views/</small>
+                        <textarea class="form-control" id="htmlNew" rows="10"></textarea>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Html Edit</label>
+                        <small>app/views/</small>
+                        <textarea class="form-control" id="htmlEdit" rows="10"></textarea>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Html View</label>
+                        <small>app/views/</small>
+                        <textarea class="form-control" id="htmlView" rows="10">View</textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Angular Controller</label>
+                        <small>public/angular/controllers</small>
+                        <textarea class="form-control" id="angularController" rows="10"></textarea>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Angular Factory</label>
+                        <small>public/angular/factory</small>
+                        <textarea class="form-control" id="angularFactory" rows="10"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="/libs/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            function Generator() {
+                this.mainClass = '';
+                this.mainClassCamel = '';
+                this.model = '';
+                this.modelFile = '';
+                this.atributes = new Array();
+                this.tab = '    ';
+                this.aryModels = new Array();
+                this.setModels();
+                this.setMainClass();
+                this.setAtributeAdd();
+                this.setFocus();
+                this.create();
+                this.update();
+            }
+            
+            Generator.prototype.createAngularLayout = function(mainClassCamel) {
+                
+                var self = this;
+                
+                $.post('angular_template', {
+                    mainClass: mainClassCamel
+                }, function(res) {
+                    $('#msg_create').removeClass('hidden');
+                    $('#msg_create').html('Scaffolding OK!');
+
+                    setTimeout(function() {
+                        $('#msg_create').addClass('hidden');
+                    }, 3000);
+                    
+                    self.setModels();
+                });
+            };
+
+            Generator.prototype.createAngular = function(mainClassCamel) {
+                var self = this;
+
+                $.post('angular', {
+                    mainClass: mainClassCamel,
+                    model: self.model
+                }, function(res) {
+
+                    if (res == 'ok') {
+                        self.createAngularLayout(mainClassCamel);
+                    } else {
+                        console.log(res);
+                    }
+
+                });
+            };
+
+            Generator.prototype.createAjax = function(mainClassCamel, modelFile, code, options) {
+
+                var self = this;
+
+                $.post('create', {
+                    mainClass: mainClassCamel,
+                    modelFile: modelFile,
+                    code: code,
+                    options: options
+                }, function(res) {
+
+                    if (res == 'ok') {
+                        self.createAngular(mainClassCamel);
+
+                    } else {
+                        alert('Error' + res);
+                    }
+
+                });
+            };
+
+            Generator.prototype.create = function() {
+
+                var obj = this;
+                $('.create').click(function() {
+
+                    var mainClass = $('#mainClass').val().trim();
+                    var hasAttribute = false;
+                    $('.atribute .row').each(function(i) {
+
+                        var name = $(this).find('input[name="atribute_name[]"]').val();
+
+                        if (name != '') {
+                            hasAttribute = true;
+                        }
+                    });
+
+                    if ((mainClass != '') && (hasAttribute)) {
+                        $('#msg_danger').addClass('hidden');
+
+                        var model = $('#model').val();
+                        var options = new Array();
+                        var code = new Array();
+
+                        $('input[name="createOptions[]"]:checked').each(function() {
+
+                            code.push($('#' + $(this).val()).val());
+                            options.push($(this).val());
+                        });
+
+                        obj.createAjax(obj.mainClassCamel, obj.modelFile, code, options);
+                    } else {
+                        $('#msg_danger').removeClass('hidden');
+                        $('#msg_danger').html('Main Class or Moongose Model are empty');
+                        
+                        setTimeout(function(){
+                            $('#msg_danger').addClass('hidden');
+                        },3000);
+                    }
+                });
+                
+                $('.newClass').click(function() {
+                    $('#mainClass').val('');
+                    obj.removeAtributes();
+                    obj.update();
+                    $('#mainClass').focus();
+                });
+            };
+
+            Generator.prototype.setModels = function() {
+                var self = this;
+                $.get('models', {}, function(aryModels) {
+                    self.aryModels = aryModels;
+
+                    self.setMainClassList();
+                });
+            };
+
+            Generator.prototype.setMainClassList = function() {
+
+                $('#mainClassList').find('li').remove();
+
+                for (var i in this.aryModels) {
+                    $('#mainClassList').append('<li><a href="#">' + this.aryModels[i] + '</a></li>');
+                }
+
+                $('#mainClassList').find('li a').click(function(e) {
+                    e.preventDefault();
+
+                    $('#mainClass').val($(this).html());
+                    $('#mainClass').trigger('change');
+                });
+
+            };
+
+            Generator.prototype.setFocus = function() {
+
+                $("#mainClass").focus();
+
+                $("#model, #api, #ctrl, #htmlList, #htmlNew, #htmlEdit, #angularController, #angularFactory").focus(function() {
+                    $(this).select();
+                });
+            };
+
+            Generator.prototype.createAtribute = function() {
+
+                var obj = this;
+
+                var target = '<div class="row">';
+                target += '<div class="col-md-4">';
+                target += '<select name="atribute_type[]" class="form-control atribute_type">';
+                target += '<option value="String">String</option>';
+                target += '<option value="Number">Number</option>';
+                target += '<option value="Date">Date</option>';
+                target += '<option value="Boolean">Boolean</option>';
+
+                for (var i in this.aryModels) {
+                    target += '<option value="' + this.aryModels[i] + '">Refence: ' + this.aryModels[i] + '</option>';
+                }
+
+                target += '</select>';
+                target += '</div>';
+                target += '<div class="col-md-4">';
+                target += '<input type="text" class="form-control atribute_name" name="atribute_name[]" value="" />';
+                target += '</div>';
+                target += '<div class="col-md-4">';
+                target += '<button type="button" class="btn btn-warning btn-sm atribute_add"><span class="glyphicon glyphicon-plus"></span></button> ';
+                target += '<button type="button" class="btn btn-danger btn-sm atribute_delete"><span class="glyphicon glyphicon-remove"></span></button>';
+                target += '</div>';
+                target += '</div>';
+
+                $('.atribute').append(target);
+                
+                $('.atribute_type').last().change(function() {
+                    obj.update();
+                });
+
+                $('.atribute_name').last().keyup(function(event) {
+                    obj.update();
+                });
+                
+                $('.atribute_add').last().click(function() {
+                    obj.createAtribute();
+                    $('.atribute_name').last().focus();
+                });
+
+                $('.atribute_name').last().keypress(function(event) {
+                    if (event.which == 13) {
+                        obj.createAtribute();
+                        $('.atribute_name').last().focus();
+                    }
+                });
+
+                $('.atribute_delete').last().click(function() {
+                    $(this).parent().parent().remove();
+                    obj.update();
+                });
+
+            };
+
+            Generator.prototype.removeAtributes = function() {
+                $('.atribute .row').remove();
+            };
+
+            Generator.prototype.setAtributeAdd = function() {
+                $('.atribute_add').click(this.createAtribute.bind(this));
+            };
+
+            Generator.prototype.setMainClass = function() {
+
+                var obj = this;
+                $('#mainClass').change(function() {
+
+                    obj.mainClass = $(this).val().charAt(0).toUpperCase() + $(this).val().slice(1);
+                    obj.mainClassCamel = $(this).val().charAt(0).toLowerCase() + $(this).val().slice(1);
+                    $(this).val(obj.mainClass);
+
+                    var model = obj.mainClass.replace(/\W+/g, '-').replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase();
+                    obj.modelFile = model.replace(/-/g, '_');
+
+                    obj.model = model;
+                    obj.url = '/#/' + model;
+
+                    $('#url').attr('href', obj.url + '/list');
+
+                    obj.findModel();
+                });
+            };
+
+            Generator.prototype.getReference = function() {
+
+                var obj = this;
+                obj.atributes = new Array();
+
+                var aryAtributes = new Array();
+                var atributeStr = '';
+
+                $('.atribute .row').each(function(i) {
+
+                    var type = $(this).find('select[name="atribute_type[]"]').val();
+                    var name = $(this).find('input[name="atribute_name[]"]').val();
+
+                    if ((type != 'String') && (type != 'Number') && (type != 'Date') && (type != 'Boolean')) {
+                        if ( (name == '') || (name.search('ref_') != -1 ) ) {
+                            var ref = type.replace(/\W+/g, '_').replace(/([a-z\d])([A-Z])/g, '$1_$2').toLowerCase();
+                            $(this).find('input[name="atribute_name[]"]').val('ref_' + ref);
+                        }
+                    }
+
+                    var atribute = {
+                        'type': type,
+                        'name': name
+                    };
+
+                    obj.atributes.push(atribute);
+                });
+
+                for (var i in obj.atributes) {
+
+                    atributeStr = '';
+
+                    var type = obj.atributes[i].type;
+
+                    if ((type != 'String') && (type != 'Number') && (type != 'Date') && (type != 'Boolean')) {
+                        //var model = type.charAt(0).toLowerCase() + type.slice(1);
+                        var model = type.replace(/\W+/g, '_').replace(/([a-z\d])([A-Z])/g, '$1_$2').toLowerCase();
+
+                        atributeStr = "var " + type + " = require('app/models/" + model + "');";
+
+                        aryAtributes.push(atributeStr);
+                    }
+                }
+
+
+                var comment = '';
+                if (aryAtributes.length > 0) {
+                    comment = '/**\n';
+                    comment += '* Reference Schema\n';
+                    comment += '*/\n';
+                }
+
+                return comment + aryAtributes.join('\n') + '\n';
+            };
+
+            Generator.prototype.getAtributes = function() {
+
+                var obj = this;
+                obj.atributes = new Array();
+
+                var aryAtributes = new Array();
+                var atributeStr = '';
+
+                $('.atribute .row').each(function(i) {
+
+                    var type = $(this).find('select[name="atribute_type[]"]').val();
+                    var name = $(this).find('input[name="atribute_name[]"]').val();
+
+                    var atribute = {
+                        'type': type,
+                        'name': name
+                    };
+
+                    obj.atributes.push(atribute);
+                });
+
+                for (var i in obj.atributes) {
+
+                    atributeStr = '';
+
+                    switch (obj.atributes[i].type) {
+                        case 'String':
+
+                            atributeStr = this.tab + obj.atributes[i].name + ": {\n";
+                            atributeStr += this.tab + this.tab + "type: String,\n";
+                            atributeStr += this.tab + this.tab + "default: '',\n";
+                            atributeStr += this.tab + this.tab + "trim: true\n";
+                            atributeStr += this.tab + "}";
+
+                            aryAtributes.push(atributeStr);
+
+                            break;
+                        case 'Number':
+
+                            atributeStr = this.tab + obj.atributes[i].name + ": {\n";
+                            atributeStr += this.tab + this.tab + "type: Number,\n";
+                            atributeStr += this.tab + this.tab + "default: 0\n";
+                            atributeStr += this.tab + "}";
+
+                            aryAtributes.push(atributeStr);
+
+                            break;
+                        case 'Date':
+
+                            atributeStr = this.tab + obj.atributes[i].name + ": {\n";
+                            atributeStr += this.tab + this.tab + "type: Date,\n";
+                            atributeStr += this.tab + this.tab + "default: Date.now\n";
+                            atributeStr += this.tab + "}";
+
+                            aryAtributes.push(atributeStr);
+
+                            break;
+                        case 'Boolean':
+
+                            atributeStr = this.tab + obj.atributes[i].name + ": {\n";
+                            atributeStr += this.tab + this.tab + "type: Boolean,\n";
+                            atributeStr += this.tab + this.tab + "default: false\n";
+                            atributeStr += this.tab + "}";
+
+                            aryAtributes.push(atributeStr);
+
+                            break;
+                        default:
+
+                            var aryIn = '';
+                            var aryOut = '';
+                            if (obj.atributes[i].is_array) {
+                                aryIn = '[';
+                                aryOut = ']';
+                            }
+
+                            atributeStr = this.tab + obj.atributes[i].name.toLowerCase() + ": " + aryIn + "{\n";
+                            atributeStr += this.tab + this.tab + "type: Schema.Types.ObjectId,\n";
+                            //atributeStr += this.tab + this.tab + "ref: '" + obj.atributes[i].name.charAt(0).toUpperCase() + obj.atributes[i].name.slice(1) + "'\n";
+                            atributeStr += this.tab + this.tab + "ref: '" + obj.atributes[i].type + "'\n";
+                            atributeStr += this.tab + "}" + aryOut;
+
+                            aryAtributes.push(atributeStr);
+
+                            break;
+                    }
+                }
+
+                return aryAtributes.join(',\n');
+            };
+
+            Generator.prototype.setModel = function() {
+
+                $('#model').parent().find('small').html('app/models/' + this.modelFile + '.js');
+
+                var model = '';
+
+                model += "/**\n";
+                model += " * Modules\n";
+                model += " */\n";
+
+                model += "var mongoose = require('mongoose');\n";
+                model += "var deepPopulate = require('mongoose-deep-populate');\n";
+                model += "var Schema = mongoose.Schema;\n\n";
+
+                model += this.getReference();
+
+                model += "/**\n";
+                model += " * Schema\n";
+                model += " */\n";
+                model += "var " + this.mainClass + "Schema = new Schema({\n";
+
+                model += this.getAtributes();
+
+                model += "\n});\n\n";
+
+                model += "/**\n";
+                model += " * Plugin deepPopulate to populate data on multiple references\n";
+                model += " */\n";
+
+                model += this.mainClass + "Schema.plugin(deepPopulate);\n\n";
+
+                model += "/**\n";
+                model += " * Module Exports\n";
+                model += " */\n";
+
+                model += "module.exports = mongoose.model('" + this.mainClass + "', " + this.mainClass + "Schema, '" + this.model.replace(/-/g, '_') + "');";
+
+                $('#model').html(model);
+            };
+
+            Generator.prototype.setApi = function() {
+
+                $('#api').parent().find('small').html('app/controllers/api' + this.mainClass + 'Controller.js');
+
+                var api = '';
+
+                api += "/**\n";
+                api += " * Class REST\n";
+                api += " */\n";
+                api += "var rest = require('app/config/rest')();\n\n";
+
+                api += "/**\n";
+                api += " * Class Api" + this.mainClass + "Controller\n";
+                api += " * @extends REST class\n";
+                api += " * @property {String} model name of the MoongooseJS model\n";
+                api += " * @property {Array} auth authorization of methods (index, list, etc...)\n";
+                api += " * @property {Object} req ExpressJS request object (req)\n";
+                api += " * @property {Object} res ExpressJS response object (res)\n";
+                api += "*/\n";
+
+                //Main Class
+                api += "function Api" + this.mainClass + "Controller() {\n";
+                api += this.tab + "//this.auth = ['get', 'post', 'put', 'delete'];\n";
+                api += this.tab + "this.auth = [];\n";
+                api += this.tab + "this.model = '" + this.modelFile + "';\n";
+                api += "}\n\n";
+
+                api += "/**\n";
+                api += " * Overwrite the original prototype to extends REST class\n";
+                api += " */\n";
+                api += "Api" + this.mainClass + "Controller.prototype = rest;\n\n";
+
+                //GET
+                api += "/**\n";
+                api += " * Method for GET requests\n";
+                api += " * @returns {Object/Array} mixed JSON objects\n";
+                api += " */\n";
+                api += "Api" + this.mainClass + "Controller.prototype.get = function() {\n\n";
+                api += this.tab + "if (this.isValidGet()) {\n\n";
+                api += this.tab + this.tab + "var api" + this.mainClass + " = this;\n";
+                api += this.tab + this.tab + "var " + this.mainClass + " = require('app/models/" + this.modelFile + "');\n\n";
+                api += this.tab + this.tab + "if (typeof this.req.params.id !== 'undefined') {\n\n";
+                api += this.tab + this.tab + this.tab + "var " + this.mainClassCamel + " = this.find(" + this.mainClass + ");\n";
+                api += this.tab + this.tab + this.tab + "" + this.mainClassCamel + ".exec(function(err, " + this.mainClassCamel + ") {\n";
+                api += this.tab + this.tab + this.tab + this.tab + "api" + this.mainClass + ".callback(err, " + this.mainClassCamel + ");\n";
+                api += this.tab + this.tab + this.tab + "});\n\n";
+                api += this.tab + this.tab + "} else {\n\n";
+                api += this.tab + this.tab + this.tab + "var " + this.mainClassCamel + " = this.findAll(" + this.mainClass + ");\n";
+                api += this.tab + this.tab + this.tab + "" + this.mainClassCamel + ".exec(function(err, " + this.mainClassCamel + ") {\n";
+                api += this.tab + this.tab + this.tab + this.tab + "api" + this.mainClass + ".callback(err, " + this.mainClassCamel + ");\n";
+                api += this.tab + this.tab + this.tab + "});\n";
+                api += this.tab + this.tab + "}\n";
+                api += this.tab + "}\n";
+                api += "};\n\n";
+
+                //POST
+                api += "/**\n";
+                api += " * Method for POST requests\n";
+                api += " * @returns {Object} JSON object\n";
+                api += " */\n";
+                api += "Api" + this.mainClass + "Controller.prototype.post = function() {\n\n";
+                api += this.tab + "if (this.isValidPost()) {\n\n";
+                api += this.tab + this.tab + "var api" + this.mainClass + " = this;\n";
+                api += this.tab + this.tab + "var " + this.mainClass + " = require('app/models/" + this.modelFile + "');\n";
+                api += this.tab + this.tab + "var " + this.mainClassCamel + " = this.setPost(" + this.mainClass + ");\n\n";
+                api += this.tab + this.tab + "if (" + this.mainClassCamel + " != null) {\n";
+                api += this.tab + this.tab + this.tab + "" + this.mainClassCamel + ".save(function(err, " + this.mainClassCamel + ") {\n";
+                api += this.tab + this.tab + this.tab + this.tab + "api" + this.mainClass + ".callback(err, " + this.mainClassCamel + ");\n";
+                api += this.tab + this.tab + this.tab + "});\n";
+                api += this.tab + this.tab + "}\n";
+                api += this.tab + "}\n";
+                api += "};\n\n";
+
+                //PUT
+                api += "/**\n";
+                api += " * Method for PUT requests\n";
+                api += " */\n";
+                api += "Api" + this.mainClass + "Controller.prototype.put = function() {\n\n";
+                api += this.tab + "if (this.isValidPut()) {\n";
+                api += this.tab + this.tab + "var api" + this.mainClass + " = this;\n";
+                api += this.tab + this.tab + "var " + this.mainClass + " = require('app/models/" + this.modelFile + "');\n\n";
+                api += this.tab + this.tab + "" + this.mainClass + ".findById(this.req.params.id).exec(function(err, " + this.mainClassCamel + ") {\n";
+                api += this.tab + this.tab + this.tab + "api" + this.mainClass + ".putCallback(err, " + this.mainClassCamel + ");\n";
+                api += this.tab + this.tab + "});\n";
+                api += this.tab + "}\n";
+                api += "};\n\n";
+
+                //PUT callback
+                api += "/**\n";
+                api += " * Method for PUT requests\n";
+                api += " * @param {Object} err Error object\n";
+                api += " * @param {Object} model MongooseJS model\n";
+                api += " * @returns {Object} JSON object\n";
+                api += " */\n";
+                api += "Api" + this.mainClass + "Controller.prototype.putCallback = function(err, " + this.mainClass.toLowerCase() + ") {\n\n";
+                api += this.tab + "if (err) {\n";
+                api += this.tab + this.tab + "this.res.status(400).send('Bad Request: ' + err.message);\n";
+                api += this.tab + "} else {\n";
+                api += this.tab + this.tab + "if (" + this.mainClass.toLowerCase() + " != null) {\n";
+                api += this.tab + this.tab + this.tab + "var api" + this.mainClass + " = this;\n";
+                api += this.tab + this.tab + this.tab + "var " + this.mainClass.toLowerCase() + " = this.setPut(" + this.mainClass.toLowerCase() + ");\n\n";
+                api += this.tab + this.tab + this.tab + "if (" + this.mainClass.toLowerCase() + " != null) {\n";
+                api += this.tab + this.tab + this.tab + this.tab + "" + this.mainClass.toLowerCase() + ".save(function(err, " + this.mainClassCamel + ") {\n";
+                api += this.tab + this.tab + this.tab + this.tab + this.tab + "api" + this.mainClass + ".callback(err, " + this.mainClassCamel + ");\n";
+                api += this.tab + this.tab + this.tab + this.tab + "});\n";
+                api += this.tab + this.tab + this.tab + "}\n";
+                api += this.tab + this.tab + "}\n";
+                api += this.tab + "}\n";
+                api += "};\n\n";
+
+                //DELETE
+                api += "/**\n";
+                api += " * Method for DELETE requests\n";
+                api += " * @returns {Object} JSON object\n";
+                api += " */\n";
+                api += "Api" + this.mainClass + "Controller.prototype.delete = function() {\n\n";
+                api += this.tab + "if (this.isValidDelete()) {\n";
+                api += this.tab + this.tab + "var api" + this.mainClass + " = this;\n";
+                api += this.tab + this.tab + "var " + this.mainClass + " = require('app/models/" + this.modelFile + "');\n\n";
+                api += this.tab + this.tab + "" + this.mainClass + ".findByIdAndRemove(this.req.params.id,function(err, " + this.mainClassCamel + ") {\n";
+                api += this.tab + this.tab + this.tab + "api" + this.mainClass + ".callback(err, " + this.mainClassCamel + ");\n";
+                api += this.tab + this.tab + "});\n";
+                api += this.tab + "}\n";
+                api += "};\n\n";
+
+                //Exports
+                api += "/**\n";
+                api += " * Module exports\n";
+                api += " */\n";
+                api += "module.exports = new Api" + this.mainClass + "Controller();";
+
+                $('#api').html(api);
+            };
+
+            Generator.prototype.setController = function() {
+
+                $('#ctrl').parent().find('small').html('app/controllers/' + this.mainClass.toLowerCase() + 'Controller.js');
+
+                var ctrl = '';
+                var folderName = this.mainClass.replace(/\W+/g, '_').replace(/([a-z\d])([A-Z])/g, '$1_$2').toLowerCase();
+
+                ctrl += "/**\n";
+                ctrl += " * Class " + this.mainClass + "Controller\n";
+                ctrl += " * Prints HTML templates to AngularJS using different layouts (empty, main, main_admin, etc...)\n";
+                ctrl += " * @property {Array} auth authorization of methods (index, list, etc...)\n";
+                ctrl += " * @property {Object} req ExpressJS request object (req)\n";
+                ctrl += " * @property {Object} res ExpressJS response object (res)\n";
+                ctrl += " */\n";
+
+                //Main Class
+                ctrl += "function " + this.mainClass + "Controller() {\n";
+                ctrl += this.tab + "//this.auth = ['index', 'list', 'view', 'new', 'edit', 'delete'];\n";
+                ctrl += this.tab + "this.auth = [];\n";
+                ctrl += "}\n\n";
+
+                //List method
+                ctrl += this.mainClass + "Controller.prototype.list = function() {\n";
+                ctrl += this.tab + "this.res.render('" + folderName + "/list.html',{\n";
+                ctrl += this.tab + this.tab + "layout:'layout/empty.html'\n";
+                ctrl += this.tab + "});\n";
+                ctrl += "};\n\n";
+
+                //View method
+                ctrl += this.mainClass + "Controller.prototype.view = function() {\n";
+                ctrl += this.tab + "this.res.render('" + folderName + "/view.html',{\n";
+                ctrl += this.tab + this.tab + "layout:'layout/empty.html'\n";
+                ctrl += this.tab + "});\n";
+                ctrl += "};\n\n";
+
+                //New method
+                ctrl += this.mainClass + "Controller.prototype.new = function() {\n";
+                ctrl += this.tab + "this.res.render('" + folderName + "/new.html',{\n";
+                ctrl += this.tab + this.tab + "layout:'layout/empty.html'\n";
+                ctrl += this.tab + "});\n";
+                ctrl += "};\n\n";
+
+                //Edit method
+                ctrl += this.mainClass + "Controller.prototype.edit = function() {\n";
+                ctrl += this.tab + "this.res.render('" + folderName + "/edit.html',{\n";
+                ctrl += this.tab + this.tab + "layout:'layout/empty.html'\n";
+                ctrl += this.tab + "});\n";
+                ctrl += "};\n\n";
+
+                //Delete method
+                ctrl += this.mainClass + "Controller.prototype.delete = function() {\n";
+                ctrl += this.tab + "this.res.render('" + folderName + "/delete.html',{\n";
+                ctrl += this.tab + this.tab + "layout:'layout/empty.html'\n";
+                ctrl += this.tab + "});\n";
+                ctrl += "};\n\n";
+
+                //Exports
+                ctrl += "/**\n";
+                ctrl += " * Module exports\n";
+                ctrl += " */\n";
+                ctrl += "module.exports = new " + this.mainClass + "Controller();";
+
+                $('#ctrl').html(ctrl);
+            };
+
+            Generator.prototype.setHtmlList = function() {
+
+                $('#htmlList').parent().find('small').html('app/views/' + this.url + '/list.html');
+
+                var view = '';
+                view += '<ol class="breadcrumb">\n';
+                view += '<li><a href="#">Home</a></li>\n';
+                view += '<li class="active">List</li>\n';
+                view += '</ol>\n';
+                view += '<div class="panel panel-default ng-table">\n';
+                view += '<div class="panel-heading">' + this.mainClass + ' List</div>\n';
+                view += '<div class="panel-body">\n';
+                view += '<div class="pull-right">\n';
+                view += '<a class="btn btn-primary" href="' + this.url + '/new" role="button">Nuevo</a>\n';
+                view += '</div>\n';
+                view += '</div>\n';
+                view += '<div class="form-inline">\n';
+                view += '<div class="col-md-6">\n';
+                view += 'Mostrar\n';
+                view += '<select class="form-control" ng-model="params.limit">\n';
+                view += '<option value="5">5</option>\n';
+                view += '<option value="10">10</option>\n';
+                view += '<option value="25">25</option>\n';
+                view += '<option value="50">50</option>\n';
+                view += '<option value="75">75</option>\n';
+                view += '<option value="100">100</option>\n';
+                view += '</select>\n';
+                view += 'registros por página de <strong>{{count}}</strong>\n';
+                view += '</div>\n';
+                view += '<div class="col-md-6">\n';
+                view += '<div class="pull-right">\n';
+                view += '<button type="button" class="btn btn-default prev hidden" ng-click="btnPrev()">\n';
+                view += '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>\n';
+                view += '</button>\n';
+                view += '<button type="button" class="btn btn-default next hidden" ng-click="btnNext()">\n';
+                view += '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>\n';
+                view += '</button>\n';
+                view += '</div>\n';
+                view += '</div>\n';
+                view += '</div>\n';
+                view += '<table class="table table-hover">\n';
+                view += '<thead>\n';
+                view += '<tr>\n';
+
+                for (var i in this.atributes) {
+
+                    view += '<th>\n';
+                    view += '<span class="field-'+this.atributes[i].name+' caret-up-down dropdown" ng-click="sortField(\'' + this.atributes[i].name + '\')">\n';
+                    view += this.atributes[i].name + ' <span class="caret"></span>\n';
+                    view += '</span>\n';
+                    view += '<br />\n';
+
+                    if (this.atributes[i].type == 'Date') {
+                        view += '<input type="date" class="form-control" ng-model="search.' + this.atributes[i].name + '" ng-change="searchField(\'' + this.atributes[i].name + '\', \'date\')" />\n';
+                    } else {
+                        view += '<input type="text" class="form-control" ng-model="search.' + this.atributes[i].name + '" ng-change="searchField(\'' + this.atributes[i].name + '\')" />\n';
+                    }
+
+                    view += '</th>\n';
+
+                    if (i > 5) {
+                        break;
+                    }
+                }
+
+                view += '<th>\n';
+                view += '</th>\n';
+                view += '</tr>\n';
+                view += '</thead>\n';
+                view += '<tbody>\n';
+                view += '<tr ng-repeat="' + this.mainClassCamel + ' in ary' + this.mainClass + '">\n';
+
+                for (var i in this.atributes) {
+
+                    if (this.atributes[i].type == 'Date') {
+                        view += '<td>{{' + this.mainClassCamel + '.' + this.atributes[i].name + ' | date:\'yyyy-MM-dd HH:mm:ss\'}}}</td>\n';
+                    } else {
+                        view += '<td>{{' + this.mainClassCamel + '.' + this.atributes[i].name + '}}</td>\n';
+                    }
+
+                    if (i > 5) {
+                        break;
+                    }
+                }
+
+                view += '<td>\n';
+                view += '<a href="' + this.url + '/{{' + this.mainClassCamel + '._id}}" class="btn btn-sm btn-info" title="View">\n';
+                view += '<span class="glyphicon glyphicon-file"></span>\n';
+                view += '</a>\n';
+                view += '<a href="' + this.url + '/edit/{{' + this.mainClassCamel + '._id}}" class="btn btn-sm btn-info" title="Edit">\n';
+                view += '<span class="glyphicon glyphicon-pencil"></span>\n';
+                view += '</a>\n';
+                view += '<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target=".delete-modal-sm" title="Delete" ng-click="confirmDelete(' + this.mainClassCamel + '._id)">\n';
+                view += '<span class="glyphicon glyphicon-trash"></span>\n';
+                view += '</button>\n';
+                view += '</td>\n';
+                view += '</tr>\n';
+                view += '</tbody>\n';
+                view += '</table>\n';
+                view += '<ul class="pagination pull-right">\n';
+                view += '<li id="pagination-prev">\n';
+                view += '<a href="#prev" class="prev hidden" ng-click="btnPrev()" >\n';
+                view += '<span aria-hidden="true">&laquo;</span>\n';
+                view += '</a>\n';
+                view += '</li>\n';
+                view += '<li ng-repeat="page in aryPagination">\n';
+                view += '<a href="' + this.url + '/list" ng-click="goToPage(page)">{{page}}</a>\n';
+                view += '</li>\n';
+                view += '<li id="pagination-next">\n';
+                view += '<a href="#next" class="next hidden" ng-click="btnNext()">\n';
+                view += '<span aria-hidden="true">&raquo;</span>\n';
+                view += '</a>\n';
+                view += '</li>\n';
+                view += '</ul>\n';
+
+                view += '<div class="modal fade delete-modal-sm" tabindex="-1" role="dialog">\n';
+                view += '<div class="modal-dialog modal-sm">\n';
+                view += '<div class="modal-content">\n';
+                view += '<div class="modal-header">\n';
+                view += 'Confirm Delete\n';
+                view += '</div>\n';
+                view += '<div class="modal-footer">\n';
+                view += '<button type="button" class="btn btn-danger" ng-click="deleteField()" data-dismiss="modal">Delete</button>\n';
+                view += '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\n';
+                view += '</div>\n';
+                view += '</div>\n';
+                view += '</div>\n';
+                view += '</div>\n';
+                view += '</div>\n';
+
+                $('#htmlList').html(view);
+            };
+
+            Generator.prototype.setHtmlNew = function() {
+
+                $('#htmlNew').parent().find('small').html('app/views/' + this.url + '/new.html');
+
+                var view = '';
+                view += '<ol class="breadcrumb">\n';
+                view += '<li><a href="#">Home</a></li>\n';
+                view += '<li><a href="' + this.url + '/list">List</a></li>\n';
+                view += '<li class="active">New</li>\n';
+                view += '</ol>\n';
+                view += '<div class="panel panel-default">\n';
+                view += '<div class="panel-heading">New</div>\n';
+                view += '<div class="panel-body">\n';
+                view += '<form>\n';
+                view += '<input type="hidden" ng-model="' + this.mainClassCamel + '._id" />\n';
+
+                for (var i in this.atributes) {
+
+                    view += '<div class="form-group">\n';
+                    view += '<label>' + this.atributes[i].name + '</label>\n';
+
+                    if (this.atributes[i].type == 'Date') {
+                        view += '<input type="date" ng-model="' + this.mainClassCamel + '.' + this.atributes[i].name + '" class="form-control" />\n';
+                    } else {
+                        view += '<input type="text" ng-model="' + this.mainClassCamel + '.' + this.atributes[i].name + '" class="form-control" />\n';
+                    }
+
+                    view += '</div>\n';
+                }
+
+                view += '<button type="button" class="btn btn-primary" ng-click="actionSubmit()">{{submitTitle}}</button>\n';
+                view += '</form>\n';
+                view += '</div>\n';
+                view += '</div>\n';
+
+                $('#htmlNew').html(view);
+            };
+
+            Generator.prototype.setHtmlEdit = function() {
+
+                $('#htmlEdit').parent().find('small').html('app/views/' + this.url + '/edit.html');
+
+                var view = '';
+                view += '<ol class="breadcrumb">\n';
+                view += '<li><a href="#">Home</a></li>\n';
+                view += '<li><a href="' + this.url + '/list">List</a></li>\n';
+                view += '<li class="active">Edit</li>\n';
+                view += '</ol>\n';
+                view += '<div class="alert hidden" role="alert">\n';
+                view += '<strong id="alert_msg"></strong>\n';
+                view += '</div>\n';
+                view += '<div class="panel panel-default">\n';
+                view += '<div class="panel-heading">Edit</div>\n';
+                view += '<div class="panel-body">\n';
+                view += '<form id="fileupload" action="/upload" method="POST" enctype="multipart/form-data" ';
+                view += ' ng-controller="UploaderController"';
+                view += ' data-file-upload="options"';
+                view += ' ng-class="{\'fileupload-processing\': processing() || loadingFiles}">\n';
+                view += '<input type="hidden" ng-model="' + this.mainClassCamel + '._id" />\n';
+
+                for (var i in this.atributes) {
+
+                    view += '<div class="form-group">\n';
+                    view += '<label>' + this.atributes[i].name + '</label>\n';
+
+                    if (this.atributes[i].type == 'Date') {
+                        view += '<input type="date" ng-model="' + this.mainClassCamel + '.' + this.atributes[i].name + '" class="form-control" />\n';
+                    } else {
+                        view += '<input type="text" ng-model="' + this.mainClassCamel + '.' + this.atributes[i].name + '" class="form-control" />\n';
+                    }
+
+                    view += '</div>\n';
+                }
+
+                view += '<div class="form-group col-md-2">\n';
+                    view += '<label>File Uploader</label>\n';
+                    view += '<span class="btn btn-default btn-sm btn-block fileinput-button">\n';
+                        view += '<strong>Upload File</strong>\n';
+                        view += '<input type="file" name="files[]" multiple ng-disabled="disabled">\n';
+                    view += '</span>\n';
+                view += '</div>\n';
+                view += '<!-- Upload info -->\n';
+                view += '<div class="row">\n';
+                    view += '<div class="row fileupload-buttonbar">\n';
+                        view += '<div class="col-lg-7">\n';
+                            view += '<span class="fileupload-process"></span>\n';
+                        view += '</div>\n';
+                        view += '<div class="col-lg-5 fade" data-ng-class="{in: active()}">\n';
+                            view += '<div class="progress progress-striped active" data-file-upload-progress="progress()">\n';
+                                view += '<div class="progress-bar progress-bar-success" data-ng-style="{width: num + \'%\'}"></div>\n';
+                            view += '</div>\n';
+                            view += '<div class="progress-extended">&nbsp;</div>\n';
+                        view += '</div>\n';
+                    view += '</div>\n';
+                view += '</div>\n';
+                
+                view += '<button type="button" class="btn btn-primary" ng-click="actionSubmit()">{{submitTitle}}</button>\n';
+                view += '</form>\n';
+                view += '<div class="form-group" ng-if="aryFiles.length > 0">\n';
+                view += '<label>File Uploaded List</label>\n';
+                    view += '<div ng-repeat="(key, file) in aryFiles">\n';
+                        view += '<button type="button" class="btn btn-default" ng-click="removeFile(key)">\n';
+                            view += '<span class="glyphicon glyphicon-remove-circle"></span>\n';
+                        view += '</button>\n';
+                        view += '<img data-ng-src="{{file.smallUrl}}" style="width:auto; max-height: 70px" alt="">\n';
+                view += '</div>\n';
+                view += '</div>\n';
+                view += '</div>\n';
+                view += '</div>\n';
+
+                $('#htmlEdit').html(view);
+            };
+
+            Generator.prototype.setAngularController = function() {
+
+                $('#angularController').parent().find('small').html('public/angular/controllers/' + this.mainClassCamel + 'Controller.js');
+
+                var ang = '';
+                ang += '/**\n';
+                ang += ' * Controller ' + this.mainClass + 'Index\n';
+                ang += ' * @param {$scope} $scope DOM manipulation\n';
+                ang += ' */\n';
+                ang += 'app.controller(\'' + this.mainClass + 'Index\', function($scope) {\n';
+                ang += '\n';
+                ang += '});\n';
+                ang += '\n';
+                ang += '/**\n';
+                ang += ' * Controller ' + this.mainClass + 'List\n';
+                ang += ' * @param {$scope} $scope DOM manipulation\n';
+                ang += ' * @param {' + this.mainClass + '} ' + this.mainClass + ' factory\n';
+                ang += ' */\n';
+                ang += 'app.controller(\'' + this.mainClass + 'List\', function($scope, ' + this.mainClass + ') {\n';
+                ang += '\n';
+                ang += '    $scope.actionCount = function() {\n';
+                ang += '\n';
+                ang += '        var ' + this.mainClassCamel + ' = new ' + this.mainClass + '();\n';
+                ang += '        ' + this.mainClassCamel + '.params = {\n';
+                ang += '            count: true\n';
+                ang += '        };\n';
+                ang += '        ' + this.mainClassCamel + '.ready = $scope.actionCountReady;\n';
+                ang += '        ' + this.mainClassCamel + '.findAll();\n';
+                ang += '    };\n';
+                ang += '    $scope.actionCountReady = function(count) {\n';
+                ang += '\n';
+                ang += '        $scope.count = parseInt(count);\n';
+                ang += '        $scope.actionFind();\n';
+                ang += '    };\n';
+                ang += '    $scope.actionFind = function() {\n';
+                ang += '';
+                ang += '        var ' + this.mainClassCamel + ' = new ' + this.mainClass + '();\n';
+                ang += '        ' + this.mainClassCamel + '.params = $scope.params;\n';
+                ang += '        ' + this.mainClassCamel + '.ready = $scope.actionFindReady;\n';
+                ang += '        ' + this.mainClassCamel + '.findAll();\n';
+                ang += '    };\n';
+                ang += '    $scope.actionFindReady = function(ary' + this.mainClass + ') {\n';
+                ang += '        if(Array.isArray(ary' + this.mainClass + ')) {\n';
+                ang += '            $scope.ary' + this.mainClass + ' = ary' + this.mainClass + ';\n';
+                ang += '        } else {\n';
+                ang += '            $scope.ary' + this.mainClass + ' = new Array(ary' + this.mainClass + ');\n';
+                ang += '        } \n';
+                ang += '    };\n';
+                ang += '    $scope.actionDelete = function() {\n';
+                ang += '        var ' + this.mainClassCamel + ' = new ' + this.mainClass + '();\n';
+                ang += '        ' + this.mainClassCamel + '.id = $scope.deleteId;\n';
+                ang += '        ' + this.mainClassCamel + '.ready = $scope.actionDeleteReady;\n';
+                ang += '        ' + this.mainClassCamel + '.delete();\n';
+                ang += '    };\n';
+                ang += '    $scope.actionDeleteReady = function(' + this.mainClassCamel + ') {\n';
+                ang += '        $scope.deleteId = \'\';\n';
+                ang += '        $scope.init();\n';
+                ang += '    };\n';
+                ang += '    $scope.init = function() {\n';
+                ang += '        $scope.actionCount();\n';
+                ang += '    };\n';
+                ang += '    $scope.init();\n';
+                ang += '});\n';
+                ang += '\n';
+                ang += '/**\n';
+                ang += ' * Controller ' + this.mainClass + 'New\n';
+                ang += '* @param {$scope} $scope DOM manipulation\n';
+                ang += '* @param {$location} $location service\n';
+                ang += ' * @param {' + this.mainClass + '} ' + this.mainClass + ' factory\n';
+                ang += ' */\n';
+                ang += 'app.controller(\'' + this.mainClass + 'New\', function($scope, $location, ' + this.mainClass + ') {\n';
+                ang += '\n';
+                ang += '    $scope.actionSubmit = function() {\n';
+                ang += '\n';
+                ang += '        var ' + this.mainClassCamel + ' = new ' + this.mainClass + '();\n';
+                ang += '        ' + this.mainClassCamel + '.data = $scope.' + this.mainClassCamel + ';\n';
+                ang += '        ' + this.mainClassCamel + '.ready = $scope.actionSubmitReady;\n';
+                ang += '        ' + this.mainClassCamel + '.add();\n';
+                ang += '    };\n';
+                ang += '    $scope.actionSubmitReady = function(' + this.mainClassCamel + ') {\n';
+                ang += '        $location.path(\'' + this.model + '/edit/\' + ' + this.mainClassCamel + '._id);\n';
+                ang += '    };\n';
+                ang += '    $scope.init = function() {\n';
+                ang += '        $scope.submitTitle = \'Crear\';\n';
+                ang += '    };\n';
+                ang += '    $scope.init();\n';
+                ang += '});\n';
+                ang += '\n';
+                ang += '/**\n';
+                ang += ' * Controller ' + this.mainClass + 'Edit\n';
+                ang += ' * @param {scope} $scope DOM manipulation\n';
+                ang += ' * @param {stateParams} $stateParams\n';
+                ang += ' * @param {' + this.mainClass + '} ' + this.mainClass + ' factory\n';
+                ang += ' */\n';
+                ang += '\n';
+                ang += 'app.controller(\'' + this.mainClass + 'Edit\', function($scope, $stateParams, ' + this.mainClass + ') {\n';
+                ang += '\n';
+                ang += '    $scope.actionSubmit = function() {\n';
+                ang += '\n';
+                ang += '        var ' + this.mainClassCamel + ' = new ' + this.mainClass + '();\n';
+                ang += '        ' + this.mainClassCamel + '.id = $scope.' + this.mainClassCamel + '._id;\n';
+                ang += '        ' + this.mainClassCamel + '.data = $scope.' + this.mainClassCamel + ';\n';
+                ang += '        ' + this.mainClassCamel + '.ready = $scope.actionSubmitReady;\n';
+                ang += '        ' + this.mainClassCamel + '.error = $scope.actionSubmitError;\n';
+                ang += '        ' + this.mainClassCamel + '.update();\n';
+                ang += '    };\n';
+                ang += '    $scope.actionSubmitError = function(' + this.mainClassCamel + ') {\n';
+                ang += '        $(\'.alert\').removeClass(\'alert-success\');\n';
+                ang += '        $(\'.alert\').addClass(\'alert-danger\');\n';
+                ang += '        $(\'.alert\').removeClass(\'hidden\');\n';
+                ang += '        $(\'#alert_msg\').html(' + this.mainClassCamel + ');\n';
+                ang += '        $scope.init();\n';
+                ang += '    };\n';
+                ang += '    $scope.actionSubmitReady = function(' + this.mainClassCamel + ') {\n';
+                ang += '        $(\'.alert\').removeClass(\'alert-danger\');\n';
+                ang += '        $(\'.alert\').addClass(\'alert-success\');\n';
+                ang += '        $(\'.alert\').removeClass(\'hidden\');\n';
+                ang += '        $(\'#alert_msg\').html(\'Datos guardados exitosamente\');\n';
+                ang += '        $scope.init();\n';
+                ang += '    };\n';
+                ang += '    $scope.init = function() {\n';
+                ang += '        $scope.submitTitle = \'Guardar\';\n';
+                ang += '        var ' + this.mainClassCamel + ' = new ' + this.mainClass + '();\n';
+                ang += '        ' + this.mainClassCamel + '.id = $stateParams.id;\n';
+                ang += '        ' + this.mainClassCamel + '.ready = $scope.actionInitReady;\n';
+                ang += '        ' + this.mainClassCamel + '.findById();\n';
+                ang += '    };\n';
+                ang += '    $scope.actionInitReady = function(' + this.mainClassCamel + ') {\n';
+                ang += '        $scope.' + this.mainClassCamel + ' = ' + this.mainClassCamel + ';\n';
+                ang += '    };\n';
+                ang += '    $scope.$on(\'uploader.getFiles()\', function(event, aryFiles) {\n';
+                ang += '        $scope.aryFiles = aryFiles;\n';
+                ang += '    });\n';
+                ang += '    $scope.init();\n';
+                ang += '});\n';
+                ang += '\n';
+                ang += '/**\n';
+                ang += ' * Controller ' + this.mainClass + 'View\n';
+                ang += ' * @param {scope} $scope DOM manipulation\n';
+                ang += ' * @param {stateParams} $stateParams\n';
+                ang += ' * @param {' + this.mainClass + '} ' + this.mainClass + ' factory\n';
+                ang += ' */\n';
+                ang += '\n';
+                ang += 'app.controller(\'' + this.mainClass + 'View\', function($scope, $stateParams, ' + this.mainClass + ') {\n';
+                ang += '\n';
+                ang += '    $scope.init = function() {\n';
+                ang += '        var ' + this.mainClassCamel + ' = new ' + this.mainClass + '();\n';
+                ang += '        ' + this.mainClassCamel + '.id = $stateParams.id;\n';
+                ang += '        ' + this.mainClassCamel + '.ready = $scope.actionInitReady;\n';
+                ang += '        ' + this.mainClassCamel + '.findById();\n';
+                ang += '    };\n';
+                ang += '    $scope.actionInitReady = function(' + this.mainClassCamel + ') {\n';
+                ang += '        $scope.' + this.mainClassCamel + ' = ' + this.mainClassCamel + ';\n';
+                ang += '    };\n';
+                ang += '    $scope.init();\n';
+                ang += '});\n';
+
+                $('#angularController').html(ang);
+            };
+
+            Generator.prototype.setAngularFactory = function() {
+                $('#angularFactory').parent().find('small').html('public/angular/factory/' + this.mainClass.toLowerCase() + 'Factory.js');
+                var ang = '';
+                ang += '/**\n';
+                ang += ' * Factory ' + this.mainClass + '\n';
+                ang += ' * @extends activeRecordService\n';
+                ang += ' * @param {activeRecordService} activeRecordService\n';
+                ang += ' * @return {activeRecordService} activeRecordService overwrited to controller\n';
+                ang += ' */\n';
+                ang += 'app.factory(\'' + this.mainClass + '\', function(activeRecordService) {\n';
+                ang += '\n';
+                ang += '    function ' + this.mainClass + '(){\n';
+                ang += '        this.model = \'' + this.model + '\';\n';
+                ang += '    }\n';
+                ang += '\n';
+                ang += '    ' + this.mainClass + '.prototype = activeRecordService;\n';
+                ang += '\n';
+                ang += '    return ' + this.mainClass + ';\n';
+                ang += '});\n';
+
+                $('#angularFactory').html(ang);
+            };
+
+            Generator.prototype.findModel = function() {
+                var obj = this;
+
+                $.get(window.location.origin + '/mean/check/' + this.modelFile, {}, function(aryJson) {
+
+                    if (aryJson.length > 0) {
+
+                        obj.removeAtributes();
+
+                        for (var x in aryJson) {
+                            obj.createAtribute();
+
+                            var atribute = $('.atribute .row')[x];
+
+                            $(atribute).find('select[name="atribute_type[]"]').val(aryJson[x].type);
+                            $(atribute).find('input[name="atribute_name[]"]').val(aryJson[x].name);
+                        }
+
+                        obj.update();
+                        $('.atribute_name').last().focus();
+                        
+                    } else {
+                        obj.removeAtributes();
+
+                        if ($('.atribute .row').length == 0) {
+                            obj.createAtribute();
+                        }
+                        
+                        $('.atribute_name').first().focus();
+                    }
+                });
+            };
+
+            Generator.prototype.update = function() {
+                this.setModel();
+                this.setApi();
+                this.setController();
+                this.setHtmlList();
+                this.setHtmlNew();
+                this.setHtmlEdit();
+                this.setAngularController();
+                this.setAngularFactory();
+            };
+
+            $(document).ready(function() {
+                var generator = new Generator();
+            });
+        </script>
+    </body>
+</html>

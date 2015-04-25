@@ -1,0 +1,98 @@
+<div class="container">
+    <div ng-controller="IndexShared" ng-include="'index/shared'" class="col-md-3 col-xs-12 col_left"></div>
+
+    <div class="col-md-8 col-sm-7 hidden-xs">
+        <div class="row muro-pattern no-padding">
+            <div class="elmuro">Noticias</div>
+        </div>
+
+        <!--// main news -->
+        <div class="row" style="margin-top: 30px;">
+            <div class="col-md-12 col-sm-12 no-padding">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="custom-search-input">
+                            <div class="input-group col-md-12">
+                                <input type="text" ng-model="searchNews.title" ng-change="actionSearch()" ng-enter="actionSearch()" class="search-query form-control" placeholder="Buscar" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button">
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <!-- Single button -->
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-default btn-warning dropdown-toggle" data-toggle="dropdown">
+                                Ordenar por <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a ng-click="reloadNews('-');">
+                                        <i ng-if="newsSort == '-date_updated'" class="fa fa-check"></i>
+                                        Lo más reciente
+                                    </a>
+                                </li>
+                                <li>
+                                    <a ng-click="reloadNews('');">
+                                        <i ng-if="newsSort == 'date_updated'" class="fa fa-check"></i>
+                                        Lo más antiguo
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <br/>
+
+                <div class="row">
+                    <div class="panel panel-default widget">
+                        <div class="panel-heading">
+                            <span class="glyphicon glyphicon-comment"></span>
+                            <h3 class="panel-title">
+                                Últimas noticias
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group sep-news">
+                                <li ng-repeat="news in aryNews" class="list-group-item ">
+                                    <div class="row">
+                                        <div class="col-xs-2 col-md-2">
+                                            <a href="/#/page/{{news._id}}">
+                                                <img ng-src="{{news.ref_image.image_small}}" class="img-thumbnail img-responsive" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-9 col-md-9">
+                                            <div>
+                                                <a class="news-tit-view" href="/#/page/{{news._id}}">{{news.title}}</a>
+                                                <div class="mic-info">
+                                                    Por: <a href="/#/profile/{{news.ref_profile._id}}">{{news.ref_profile.full_name}}</a> |  
+                                                    <i class="fa fa-clock-o"></i> 
+                                                    {{news.date_created | date:'medium'}} 
+                                                </div>
+                                            </div>
+                                            <div class="action">
+                                                <a href="/#/page/{{news._id}}">
+                                                    <button class="btn btn-xs btn-primary">
+                                                        <i class="fa fa-eye"></i> Leer más
+                                                    </button>
+                                                </a>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div infinite-scroll="actionLoadMore()" infinite-scroll-distance="1"></div>
+                
+            </div>
+        </div>
+    </div>
+</div>

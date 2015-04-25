@@ -1,0 +1,80 @@
+<br>
+<div ng-controller="AdminPageNew" class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <ol class="breadcrumb">
+            <li><a href="/#/admin-panel">Home</a></li>
+            <li><a href="/#/<%= url %>/list">Listado</a></li>
+            <li class="active">Nueva</li>
+        </ol>
+        <div class="alert hidden" role="alert">
+            <strong id="alert_msg"></strong>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-file-text-o"></i> <%= title %> / Nueva
+            </div>
+            <div class="panel-body">
+                <input type="hidden" ng-model="page._id" />
+                <input type="hidden" ng-model="page.location" ng-init="page.location = '<%= location %>'" />
+                <input type="hidden" ng-init="init('<%= location %>','<%= url %>')" />
+                <input type="hidden" ng-model="page.date_created" class="form-control" />
+                <input type="hidden" ng-model="page.date_updated" class="form-control" />
+                <div class="col-md-12 form-group">
+                    <label ng-if="showFooter">Categoría</label>
+                    <div class="row">
+                        <div class="col-md-5 hide">
+                            <label class="radio-inline">
+                                <input type="radio" ng-model="page.location"  ng-click="showFooter = false; showNoticia = false" value="menu_home">
+                                Menu Home
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" ng-model="page.location"  ng-click="showFooter = false; showNoticia = false" value="banner">
+                                Banner
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" ng-model="page.location" ng-click="showFooter = false; showNoticia = false" value="interior">
+                                Interior
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" ng-model="page.location" ng-click="showFooter = false; showNoticia = true" value="noticia">
+                                Noticia
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" ng-model="page.location" ng-click="showFooter = false; showNoticia = false" value="slider">
+                                Slider
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" ng-model="page.location" ng-click="showFooter = false; showNoticia = false" value="galeria">
+                                Galeria
+                            </label>
+                            <label class="radio-inline">
+                                <input ng-model="showFooter" type="radio" ng-value="true" ng-click="page.location = ''">
+                                Footer
+                            </label>
+                        </div>
+                        <div class="col-md-3 form-group" ng-if="showFooter">
+                            <select class="form-control" ng-model="page.location">
+                                <option value="">Seleccione</option>
+                                <option value="footer_tu_fch">Tu FCh.cl</option>
+                                <option value="footer_actualidad">Actualidad</option>
+                                <option value="footer_servicios">Servicios</option>
+                                <option value="footer_areas_de_servicio">Áreas de Servicio</option>
+                                <option value="footer_mas_info">Más Info.</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 form-group">
+                    <label>Título</label>
+                    <input type="text" ng-model="page.title" class="form-control" ng-enter="actionSubmit()" />
+                </div>
+                <div class="col-md-12 form-group">
+                    <button type="button" class="btn btn-info" ng-click="actionSubmit()">{{submitTitle}}</button>
+                    <a class="btn btn-default" href="/#/<%= url %>/list">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>

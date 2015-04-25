@@ -1,0 +1,301 @@
+<div class="container">
+    <div ng-controller="IndexShared" ng-include="'index/shared'" class="col-md-3 col-xs-12 col_left"></div>
+    <div class="col-md-6 col-sm-12 col_central">
+        <div class="row">
+            <div class="carousel-inner">
+                <carousel interval="3000">
+                    <slide ng-repeat="slide in arySliderHome">
+                        <a href="{{slide.url}}">
+                            <img ng-src="{{slide.ref_image.image_large}}" style="height: 300px; width: 540px;"/>
+                        </a>
+                        <div class="carousel-caption ">
+                            <h1>{{slide.title}}</h1>
+                            <p>{{slide.lower}}</p>
+                        </div>
+                    </slide>
+                </carousel>
+            </div>
+        </div>
+        <div class="visible-xs"> 
+            <div class="well tufch-movil">
+                <div class="col-xs-12 celebracion-titulo">Links Internos</div>
+                <div class="row text-center">
+                    <div class="row interno-mobile">
+                        <div class="col-xs-4">
+                            <img src="img\late_mobile.jpg" class="img-responsive">
+                        </div>
+                        <div class="col-xs-4 border-tu-movil">
+                            <img src="img\partamos_mobile.jpg" class="img-responsive">
+                        </div>
+                        <div class="col-xs-4 border-tu-movil">
+                            <img src="img\cdc-mobile.jpg" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="muro" class="margin-bottom row" ng-controller="WallShared" ng-include="'wall/shared'"></div>
+
+
+        <div id="galeria" class="row margin-bottom">
+            <div>
+                <ul class="hidden-sm hidden-xs nav nav-justified nav-tabs">
+                    <li role="presentation" class="active tab-active">
+                        <a class="color-white" href="">GALERÍA</a>
+                    </li>
+                </ul>
+            </div>
+
+            <carousel interval="3000">
+                <slide ng-repeat="gallery in aryGalleryHome">
+                    <a href="{{gallery.url}}" class="thumbnail">
+                        <img ng-src="{{gallery.ref_image.image_medium}}" alt="Image" style="width: auto; height: 130px;">
+                    </a>
+                </slide>
+            </carousel>
+        </div>
+
+
+    </div>
+    <div class="col-md-3 col_right hidden-sm hidden-xs">
+        <!--/calendario_muro-->
+        <div class="row">
+            <div class="col-md-12 no-padding">
+                <div class="panel panel-primary panel-primary-orange">
+                    <div class="panel-heading cpanel">
+                        <h3 class="panel-title title-accordeon ">
+                            <i class="fa fa-calendar"></i> Calendario 
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a>13 de Febrero | Reunión 1</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a>14 de Febrero | Reunión 2</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a>15 de Febrero | Reunión 3</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/noticias_destacadas_muro-->
+        <div class="row no-margin">      
+            <div class="panel-heading cpanel">
+                <h3 class="panel-title title-accordeon ">
+                    <i class="fa fa-newspaper-o"></i> 
+                    <a class="action" href="#/news">Noticias</a> 
+                </h3>
+            </div>
+            <div>
+                <div class="view view-sixth ">
+                    <a href="{{aryNewsHome[0].url}}">
+                        <img ng-src="{{aryNewsHome[0].ref_image.image_medium}}" class="img-responsive" />
+                        <div class="mask" style="width: 263px;" >
+                            <h2>{{aryNewsHome[0].title}}</h2>
+                            <p>{{aryNewsHome[0].lower}}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div class="view view-sixth ">
+                    <a href="{{aryNewsHome[0].url}}">
+                        <img ng-src="{{aryNewsHome[1].ref_image.image_medium}}" class="img-responsive" />
+                        <div class="mask" style="width: 263px;" >
+                            <h2>{{aryNewsHome[1].title}}</h2>
+                            <p>{{aryNewsHome[1].lower}}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row margin-news-foto">
+                <div class="col-md-6 col-sm-6 col-xs-6 no-padding ">
+                    <a href="{{aryNewsHome[2].url}}"> 
+                        <img ng-src="{{aryNewsHome[2].ref_image.image_small}}" class="right-foto" width="128" height="75">
+                    </a>
+                </div>
+                <div  class="col-md-6 col-sm-6 col-xs-6 no-padding ">
+                    <a href="{{aryNewsHome[3].url}}">
+                        <img ng-src="{{aryNewsHome[3].ref_image.image_small}}" class="right-foto" width="128" height="75">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--/cumpleaños_muros-->
+        <div class="col-md-12 no-padding">
+            <div class="panel panel-primary panel-primary-orange">
+                <div class="panel-heading cpanel">
+                    <h3 class="panel-title title-accordeon ">
+                        <i class="fa fa-birthday-cake"></i> 
+                        <a class="action" href="#/birthday">Celebraciones </a>
+                    </h3>
+                </div>
+                <div class="panel-body">
+
+                    <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="row">
+                                    <div class="col-sm-12">                             
+                                        <div class="col-item2">
+                                            <carousel interval="2000" >
+                                                <slide ng-repeat="birthday in aryBirthdayHome" >
+                                                    <a href="#/profile/{{birthday._id}}" class="thumbnail">
+                                                        <img ng-src="{{birthday.ref_image.image_original}}" style="width: 61px; height: 61px;">
+                                                    </a>
+                                                    <div class="price">
+                                                        <h3>{{birthday.full_name}}</h3>
+                                                        </div>
+                                                </slide>
+                                            </carousel>
+                                            <div class="info hidden">
+                                                <div class="row text-center">
+                                                    <div class="price col-md-6">
+                                                        <h5>Nombre Usuario 1</h5>
+                                                    </div>
+                                                    <div class="rating hidden-sm col-md-6">
+                                                        <h5 class="price-text-color">
+                                                            Enviar Saludo</h5>
+                                                    </div>
+                                                </div>
+
+                                                <div class="clearfix">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="separator clear-left">
+                        <div class="col-md-12 text-center">
+                            <div class="col-md-4 icons">
+                                <a href="#" class="icons"><i class="fa fa-smile-o icons"></i></a>
+                            </div>
+                            <div class="col-md-4 icons">
+                                <a href="#" class="active"><i class="fa fa-birthday-cake icons "></i></a>
+                            </div>
+                            <div class="col-md-4 icons">
+                                <a href="#" class=""><i class="fa fa-users icons"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row" style="display:none;">
+            <div class="hidden-sm hidden-xs row">
+                <ul id="accordion_experto" class="accordion">
+                    <li>
+                        <div class="link title-accordeon">Expertos
+                            <i class="fa fa-chevron-down chevron-down-margin"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#">Formulario 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Formulario 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Formulario 3</a>
+                            </li>
+                            <li>
+                                <a href="#">Formulario 4</a>
+                            </li>
+                            <li>
+                                <a href="#">Formulario 5</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row hide">
+            <div class="col-md-12 no-padding">
+                <div class="panel panel-primary panel-primary-orange">
+                    <div class="panel-heading cpanel">
+                        <h3 class="panel-title title-accordeon ">
+                            <i class="fa fa-bar-chart"></i> Encuestas 
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>Pregunta simulada que tendra un largo maximo establecido con anterioridad</p>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios">
+                                        Opción 1
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios">
+                                        Opción 2
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios">
+                                        Opción 3
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel-footer text-center">
+                        <button type="button" class="btn btn-orange btn-sm">
+                            Votar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // Fin Vista Desktop -->
+
+        <!-- // Inicio Vista Tablet -->
+        <div class="visible-xs">
+
+            <div class="row hide-sm">
+
+                <div class="well tufch-movil">
+                    <div class="col-xs-12 celebracion-titulo">Tu FCh</div>
+                    <div class="row text-center icon-links-mobile">
+                        <div class="col-xs-3">
+                            <a href="#"><i class="fa fa-coffee"></i></a>
+                        </div>
+                        <div class="col-xs-3 border-tu-movil">
+                            <a href="#"><i class="fa fa-question-circle"></i></a>
+                        </div>
+                        <div class="col-xs-3 border-tu-movil">
+                            <a href="#"><i class="fa fa-file-text-o"></i></a>
+                        </div>
+                        <div class="col-xs-3 border-tu-movil">
+                            <a href="#"><i class="fa fa-wrench"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

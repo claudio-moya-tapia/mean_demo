@@ -1,0 +1,60 @@
+<div class="container">
+    <div ng-controller="IndexShared" ng-include="'index/shared'" class="col-md-3 col-xs-12 col_left"></div>
+
+    <div class="col-md-8 col-sm-7 col-xs-12 no-padding">
+
+        <div class="row muro-pattern no-padding">
+            <div class="elmuro">cumPleaños</div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12 no-padding back-tabs">
+                <ul class="nav nav-tabs nav-justified ">
+                    <li ng-class="{'active': activeDay}">
+                        <a ng-click="actionBirthdayDay()" class="btn">
+                            <i class="fa fa-birthday-cake"></i> Cumpleaños del Día
+                        </a>
+                    </li>
+                    <li ng-class="{'active': activeWeek}">
+                        <a ng-click="actionBirthdayWeek()" class="btn">
+                            <i class="fa fa-birthday-cake"></i> Cumpleaños de la Semana
+                        </a>
+                    </li>
+                    <li ng-class="{'active': activeMonth}">
+                        <a ng-click="actionBirthdayMonth()" class="btn">
+                            <i class="fa fa-birthday-cake"></i> Cumpleaños del Mes
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+
+            <div ng-repeat="birthday in aryBirthday" class="col-md-6 col-sm-6 col-xs-12">
+                <div class="well well-md min-height-friends">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img ng-src="{{birthday.ref_image.image_original}}" class="thumbnail thumbnail-amigos">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">
+                                <a href="/#/profile/{{birthday._id}}">{{birthday.full_name}}</a>
+                            </h4>
+                            <p>
+                                <span class="label label-link gray-border">{{birthday.total_post}} Posts</span> 
+                                <span class="label label-link gray">{{birthday.total_friend}} Amigos</span>
+
+                                <button class="btn btn-xs btn-success">
+                                    <span class="label label-link gray">Enviar Abrazo</span>
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div infinite-scroll="actionLoadMore()" infinite-scroll-distance="1"></div>
+        </div>
+
+    </div>
+</div>

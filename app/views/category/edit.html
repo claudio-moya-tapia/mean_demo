@@ -1,0 +1,51 @@
+<ol class="breadcrumb">
+<li><a href="#">Home</a></li>
+<li><a href="/#/category/list">List</a></li>
+<li class="active">Edit</li>
+</ol>
+<div class="alert hidden" role="alert">
+<strong id="alert_msg"></strong>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">Edit</div>
+<div class="panel-body">
+<form id="fileupload" action="/upload" method="POST" enctype="multipart/form-data"  ng-controller="UploaderController" data-file-upload="options" ng-class="{'fileupload-processing': processing() || loadingFiles}">
+<input type="hidden" ng-model="category._id" />
+<div class="form-group">
+<label>title</label>
+<input type="text" ng-model="category.title" class="form-control" />
+</div>
+<div class="form-group col-md-2">
+<label>File Uploader</label>
+<span class="btn btn-default btn-sm btn-block fileinput-button">
+<strong>Upload File</strong>
+<input type="file" name="files[]" multiple ng-disabled="disabled">
+</span>
+</div>
+<!-- Upload info -->
+<div class="row">
+<div class="row fileupload-buttonbar">
+<div class="col-lg-7">
+<span class="fileupload-process"></span>
+</div>
+<div class="col-lg-5 fade" data-ng-class="{in: active()}">
+<div class="progress progress-striped active" data-file-upload-progress="progress()">
+<div class="progress-bar progress-bar-success" data-ng-style="{width: num + '%'}"></div>
+</div>
+<div class="progress-extended"> </div>
+</div>
+</div>
+</div>
+<button type="button" class="btn btn-primary" ng-click="actionSubmit()">{{submitTitle}}</button>
+</form>
+<div class="form-group" ng-if="aryFiles.length > 0">
+<label>File Uploaded List</label>
+<div ng-repeat="(key, file) in aryFiles">
+<button type="button" class="btn btn-default" ng-click="removeFile(key)">
+<span class="glyphicon glyphicon-remove-circle"></span>
+</button>
+<img data-ng-src="{{file.smallUrl}}" style="width:auto; max-height: 70px" alt="">
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,81 @@
+<ol class="breadcrumb">
+<li><a href="#">Home</a></li>
+<li><a href="/#/profile/list">List</a></li>
+<li class="active">Edit</li>
+</ol>
+<div class="alert hidden" role="alert">
+<strong id="alert_msg"></strong>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">Edit</div>
+<div class="panel-body">
+<form>
+<input type="hidden" ng-model="profile._id" />
+<div class="form-group">
+<label>first_name</label>
+<input type="text" ng-model="profile.first_name" class="form-control" />
+</div>
+<div class="form-group">
+<label>last_name</label>
+<input type="text" ng-model="profile.last_name" class="form-control" />
+</div>
+<div class="form-group">
+<label>full_name</label>
+<input type="text" ng-model="profile.full_name" class="form-control" />
+</div>
+<div class="form-group">
+<label>location</label>
+<input type="text" ng-model="profile.location" class="form-control" />
+</div>
+<div class="form-group">
+<label>position</label>
+<input type="text" ng-model="profile.position" class="form-control" />
+</div>
+<div class="form-group">
+<label>facebook</label>
+<input type="text" ng-model="profile.facebook" class="form-control" />
+</div>
+<div class="form-group">
+<label>about_me</label>
+<input type="text" ng-model="profile.about_me" class="form-control" />
+</div>
+<div class="form-group">
+<label>total_post</label>
+<input type="text" ng-model="profile.total_post" class="form-control" />
+</div>
+<div class="form-group">
+<label>total_comment</label>
+<input type="text" ng-model="profile.total_comment" class="form-control" />
+</div>
+<div class="form-group">
+<label>total_share</label>
+<input type="text" ng-model="profile.total_share" class="form-control" />
+</div>
+<div class="form-group">
+<label>total_like</label>
+<input type="text" ng-model="profile.total_like" class="form-control" />
+</div>
+<div class="form-group">
+<label>total_friend</label>
+<input type="text" ng-model="profile.total_friend" class="form-control" />
+</div>
+<div class="form-group">
+<label>total_group</label>
+<input type="text" ng-model="profile.total_group" class="form-control" />
+</div>
+<div class="form-group">
+<label>ref_user</label>
+<input type="text" ng-model="profile.ref_user" class="form-control" />
+</div>
+<div class="form-group">
+<label>ref_image</label>
+<input type="text" ng-model="profile.ref_image" class="form-control" />
+</div>
+<div class="form-group">
+<label>birthday</label>
+<input type="date" ng-model="profile.birthday" class="form-control" />
+</div>
+<button type="submit" class="btn btn-primary" ng-click="actionSubmit()">{{submitTitle}}</button>
+</form>
+</div>
+</div>

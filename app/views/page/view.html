@@ -1,0 +1,130 @@
+<div class="container">
+    <div ng-controller="IndexShared" ng-include="'index/shared'" class="col-md-3 col-xs-12 col_left"></div>
+
+    <div class="col-md-6">
+        <div class="row" ng-if="index == 'news'">
+            <br>
+            <ol class="breadcrumb">
+                <li><a href="/#/home">Home</a></li>
+                <li><a href="/#/news">Noticias</a></li>
+            </ol>
+        </div>
+        <br/>
+        <div class="row" style="margin-bottom: 10px;" ng-if="showGallery == false">
+            <img ng-if="page.ref_image.image_original != 'http://placehold.it/200x90'" ng-src="{{page.ref_image.image_original}}" class="img-responsive center-block">
+        </div>
+        <div class="row swipeboxExample" ng-if="showGallery">
+            <a ng-repeat="pageGallery in page.ref_image_related" ng-href="{{pageGallery.image_original}}" target="_blank">
+                <img ng-src="{{pageGallery.image_medium}}" class="img-responsive ng-justify-gallery">
+            </a>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <small class="fecha-late">{{page.date_updated | date:'medium'}}</small>
+                <h1 class="tit-late">{{page.title}}</h1>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+        <div class="row hidden-xs">
+            <div class="col-md-12 separador-border">
+                <div class="col-md-6 autor"><span>por</span> <strong>{{page.ref_profile.full_name}}</strong></div>
+                <div class="col-md-3 hide">
+                    <a class="accion-news" href="#"><i class="fa fa-thumbs-up"></i> ME GUSTA  </a> <span class="badge">4</span></div>
+                <div class="col-md-3 hide"><a class="accion-news" href="#"><i class="fa fa-print"></i> IMPRIMIR</a></div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-md-12" ng-bind-html="page.text | htmlEncode"></div>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-sm-3 hidden-xs no-padding ">
+
+
+        <div class="row" style="margin-top: 5px;">
+            <div class="col-md-12">
+                <div class="panel panel-primary no-radius caja-late">
+                    <div class="panel-heading no-radius caja-late">
+                        <h3 class="panel-title">{{title}} <i class="fa fa-newspaper-o pull-right icon-panel"></i> </h3>
+                    </div>
+                </div>
+            </div>
+            <div ng-repeat="related in aryPages" class="col-md-12">
+                <div class="well padding-relacionadas well-rel">
+                    <div class="media">
+                        <a ng-href="/#/page/{{related._id}}"></a>
+                        <a ng-if="related.ref_image.image_small != ''" class="pull-left" ng-href="/#/page/{{related._id}}">
+                            <img ng-src="{{related.ref_image.image_small}}" width="40" height="40" class="media-object img-circle">
+                        </a>
+                        <div class="media-body">
+                            <a ng-href="/#/page/{{related._id}}">
+                                <p>{{related.title}}</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row comment-noticia">
+            <div class="col-md-12">
+                <div class="panel panel-primary no-radius caja-late">
+                    <div class="panel-heading no-radius caja-late">
+                        <h3 class="panel-title">Ingresa tu comentario <i class="fa fa-comment pull-right icon-panel"></i> </h3>
+                    </div>
+                </div>
+
+                <div class="panel panel-default widget">                         
+                    <div class="well text-center well-comment">
+                        <div class="row">
+                            <textarea class="form-control" ng-model="newComment.text" type="text" id="userComment"></textarea>
+                        </div>
+                        <div class="row">
+                            <span class="btn-block" ng-click="actionAddComment()">
+                                <button type="button"  class="btn btn-block btn-danger">
+                                    <span class="glyphicon glyphicon-comment"></span> Comentar
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="input-group">                             
+                    </div>
+                    <div class="panel-body no-padding no-padding-top ">
+                        <ul class="list-group">
+                            <li ng-repeat="comment in page.ref_comment" class="list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-10 col-md-11">
+                                        <div>
+                                            <div class="mic-info">
+                                                <a href="#">{{comment.ref_profile.full_name}}</a> |  {{comment.date_created | date:'medium'}}
+                                            </div>
+                                        </div>
+                                        <div class="comment-text">
+                                            {{comment.text}}
+                                        </div>
+                                        <div class="action hide">
+                                            <button type="button" class="btn btn-primary btn-xs" title="Me Gusta">
+                                                <i class="fa fa-thumbs-up"></i> 
+                                            </button>
+                                            <span class="badge">4</span>
+                                            |
+                                            <button type="button" class="btn btn-danger btn-xs" title="Reportar">
+                                                <i class="fa fa-exclamation-triangle"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!--
+                        <a href="#" class="btn btn-warning btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> Ver más comentarios</a>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

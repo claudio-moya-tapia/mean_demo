@@ -1,0 +1,58 @@
+<div class="container">
+
+    <div ng-controller="ProfileShared" ng-include="'profile/shared'" class="col-md-4 col-sm-4 col-xs-5 hidden-xs sidebar padding-sidebar no-padding"></div>
+
+    <div class="col-md-8 col-sm-7 col-xs-12 no-padding">
+        <div class="row cover-image no-padding">
+            <div id="perfil" class="row">
+                <div class="well profile perfil-caja">
+                    
+                    <div ng-if="!isFriendProfile" class="row center-block perfil-boton-portada-show">
+                        <form id="fileupload" action="/upload" method="POST" enctype="multipart/form-data" 
+                              data-ng-controller="UploaderController"
+                              data-file-upload="options"
+                              data-ng-class="{'fileupload-processing': processing()}">
+                            <span class="btn btn-link btn-sm btn-block fileinput-button" ng-click="actionSetImage()">
+                                <i class="fa fa-spinner fa-spin fa-2x" ng-if="active() > 0"></i>
+
+                                <a class="btn btn-default btn-sm trans-button " ng-if="active() == 0" >
+                                    <i class="fa fa-camera"></i> Cambiar portada </a>
+                                <input type="file" name="files[]" multiple ng-disabled="disabled">
+                            </span>
+                        </form>
+                        <div class="row margin-cover-btn center-block">
+                           
+                                <div ng-if="isNewCover">
+                                    <button class="btn btn-sm btn-success" ng-click="actionCoverUpdate()"><i class="fa fa-floppy-o"></i> Guardar</button>
+                                    <button class="btn btn-sm btn-warning" ng-click="actionCoverCancel()"><i class="fa fa-times"></i> Descartar</button> 
+                                </div>
+                            
+                        </div>
+                    </div>
+                    <span class="cover-image">
+                        <img ng-src="{{cover.url}}" class="img-responsive" style="width:758px; max-height: 168px;">
+                    </span>
+                    <div ng-if="isFriendProfile" class="col-sm-12 col-md-12">
+                        <div class="btn-cover">
+                            <button class="btn btn-sm btn-primary btn-warning btn-msj hide">
+                                <span class="glyphicon glyphicon-envelope"></span> 
+                                Enviar mensaje
+                            </button>
+                            <button ng-click="actionAddFriend()" ng-if="myProfile.ref_profile_friend.indexOf(profile._id) == -1" class="btn btn-sm btn-primary btn-default agregar-amigo">
+                                <span class="glyphicon glyphicon-user"></span> 
+                                Agregar como amigo
+                            </button>
+                            <button ng-click="actionDeleteFriend()" ng-if="myProfile.ref_profile_friend.indexOf(profile._id) != -1" class="btn btn-sm btn-primary btn-default agregar-amigo">
+                                <span class="glyphicon glyphicon-user"></span> 
+                                Remover amigo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="muro" class="margin-bottom row" ng-controller="WallShared" ng-include="'wall/shared'"></div>
+
+    </div>
+</div>

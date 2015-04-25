@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+
+        <div ng-controller="GroupMenu" ng-model="currentMenu" ng-init="currentMenu = 'list'" ng-include="'group/menu'" class="row"></div>
+        <div class="row">
+            <div class="col-md-12 no-padding">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading panel-font">
+                            <i class="fa fa-users"></i> Mis Grupos
+                            <div class="checkbox-inline pull-right">
+                                <label ng-click="showMyGroups ? showMyGroups = false : showMyGroups = true">
+                                    <i class="fa fa-square-o" ng-if="!showMyGroups"></i>
+                                    <i class="fa fa-check-square-o" ng-if="showMyGroups"></i>
+                                    Mis grupos creados
+                                </label>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="panel-body">
+                            <div class="row no-padding">
+
+                                <div ng-repeat="group in aryGroup" class="col-sm-6 col-md-3">
+                                    <div class="thumbnail">
+                                        <img ng-src="{{group.ref_image.image_medium}}">
+                                        <div class="caption">
+                                            <br/>
+                                            <h1>{{group.title}}</h1>
+                                            <p>
+                                                <i class="fa fa-user"></i> 
+                                                <span class="badge">{{group.total_member}}</span>
+                                                <i class="fa fa-file-text-o"></i> 
+                                                <span class="badge">{{group.total_post}}</span>
+                                            </p>
+                                            <p class="truncar">{{group.text}}</p>
+                                            <p>
+                                                <a href="/#/group/{{group._id}}" class="btn btn-success" role="button">
+                                                    <i class="fa fa-eye"></i> Ver
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'BlissProMedium';
+    src: url('../fonts/blisspro-medium_1.eot');
+    src: url('../fonts/blisspro-medium_1.eot') format('embedded-opentype'),
+         url('../fonts/blisspro-medium_1.woff2') format('woff2'),
+         url('../fonts//blisspro-medium_1.woff') format('woff'),
+         url('../fonts/blisspro-medium_1.ttf') format('truetype'),
+         url('../fonts/blisspro-medium_1.svg#BlissProMedium') format('svg');
+}
+
+@font-face {
+    font-family: 'BlissProRegular';
+    src: url('../fonts/blisspro-regular_1.eot');
+    src: url('../fonts/blisspro-regular_1.eot') format('embedded-opentype'),
+         url('../fonts/blisspro-regular_1.woff2') format('woff2'),
+         url('../fonts/blisspro-regular_1.woff') format('woff'),
+         url('../fonts/blisspro-regular_1.ttf') format('truetype'),
+         url('../fonts/blisspro-regular_1.svg#BlissProRegular') format('svg');
+}
+
+@font-face {
+    font-family: 'BlissProBold';
+    src: url('../fonts/blisspro-bold_1.eot');
+    src: url('../fonts/blisspro-bold_1.eot') format('embedded-opentype'),
+         url('../fonts/blisspro-bold_1.woff2') format('woff2'),
+         url('../fonts/blisspro-bold_1.woff') format('woff'),
+         url('../fonts/blisspro-bold_1.ttf') format('truetype'),
+         url('../fonts/blisspro-bold_1.svg#BlissProBold') format('svg');
+}

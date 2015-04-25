@@ -1,0 +1,103 @@
+<ol class="breadcrumb">
+<li><a href="#">Home</a></li>
+<li class="active">List</li>
+</ol>
+<div class="panel panel-default ng-table">
+<div class="panel-heading">GroupPost List</div>
+<div class="panel-body">
+<div class="pull-right">
+<a class="btn btn-primary" href="/#/group-post/new" role="button">Nuevo</a>
+</div>
+</div>
+<div class="form-inline">
+<div class="col-md-6">
+Mostrar
+<select class="form-control" ng-model="params.limit">
+<option value="5">5</option>
+<option value="10">10</option>
+<option value="25">25</option>
+<option value="50">50</option>
+<option value="75">75</option>
+<option value="100">100</option>
+</select>
+registros por página de <strong>{{count}}</strong>
+</div>
+<div class="col-md-6">
+<div class="pull-right">
+<button type="button" class="btn btn-default prev hidden" ng-click="btnPrev()">
+<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+</button>
+<button type="button" class="btn btn-default next hidden" ng-click="btnNext()">
+<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+</button>
+</div>
+</div>
+</div>
+<table class="table table-hover">
+<thead>
+<tr>
+<th>
+<span class="field-title caret-up-down dropdown" ng-click="sortField('title')">
+title <span class="caret"></span>
+</span>
+<br />
+<input type="text" class="form-control" ng-model="search.title" ng-change="searchField('title')" />
+</th>
+<th>
+<span class="field-text caret-up-down dropdown" ng-click="sortField('text')">
+text <span class="caret"></span>
+</span>
+<br />
+<input type="text" class="form-control" ng-model="search.text" ng-change="searchField('text')" />
+</th>
+<th>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="groupPost in aryGroupPost">
+<td>{{groupPost.title}}</td>
+<td>{{groupPost.text}}</td>
+<td>
+<a href="/#/group-post/{{groupPost._id}}" class="btn btn-sm btn-info" title="View">
+<span class="glyphicon glyphicon-file"></span>
+</a>
+<a href="/#/group-post/edit/{{groupPost._id}}" class="btn btn-sm btn-info" title="Edit">
+<span class="glyphicon glyphicon-pencil"></span>
+</a>
+<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target=".delete-modal-sm" title="Delete" ng-click="confirmDelete(groupPost._id)">
+<span class="glyphicon glyphicon-trash"></span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="pagination pull-right">
+<li id="pagination-prev">
+<a href="#prev" class="prev hidden" ng-click="btnPrev()" >
+<span aria-hidden="true">«</span>
+</a>
+</li>
+<li ng-repeat="page in aryPagination">
+<a href="/#/group-post/list" ng-click="goToPage(page)">{{page}}</a>
+</li>
+<li id="pagination-next">
+<a href="#next" class="next hidden" ng-click="btnNext()">
+<span aria-hidden="true">»</span>
+</a>
+</li>
+</ul>
+<div class="modal fade delete-modal-sm" tabindex="-1" role="dialog">
+<div class="modal-dialog modal-sm">
+<div class="modal-content">
+<div class="modal-header">
+Confirm Delete
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-danger" ng-click="deleteField()" data-dismiss="modal">Delete</button>
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+</div>

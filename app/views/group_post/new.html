@@ -1,0 +1,22 @@
+<ol class="breadcrumb">
+<li><a href="#">Home</a></li>
+<li><a href="/#/group-post/list">List</a></li>
+<li class="active">New</li>
+</ol>
+<div class="panel panel-default">
+<div class="panel-heading">New</div>
+<div class="panel-body">
+<form>
+<input type="hidden" ng-model="groupPost._id" />
+<div class="form-group">
+<label>title</label>
+<input type="text" ng-model="groupPost.title" class="form-control" />
+</div>
+<div class="form-group">
+<label>text</label>
+<input type="text" ng-model="groupPost.text" class="form-control" />
+</div>
+<button type="button" class="btn btn-primary" ng-click="actionSubmit()">{{submitTitle}}</button>
+</form>
+</div>
+</div>

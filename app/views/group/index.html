@@ -1,0 +1,103 @@
+<div class="container grupos-content">
+    <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+        <div ng-controller="GroupMenu" ng-model="currentMenu" ng-init="currentMenu = 'index'" ng-include="'group/menu'" class="row"></div>
+
+        <div class="row">
+            <div class="col-md-3 no-padding p-right">
+                <div class="panel panel-default">
+                    <div class="panel-heading panel-font ">
+                        <i class="fa fa-line-chart"></i> Trending
+                    </div>
+                    <ul class="list-group">
+                        <li ng-repeat="trending in aryTrending" class="list-group-item">
+                            <a href="/#/group-post/{{trending._id}}">
+                                <h1>
+                                    <span class="label label-default">
+                                        {{trending.ref_group.title}}
+                                    </span>
+                                    <br><br>
+                                    {{trending.title}}
+                                </h1>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9 no-padding p-left">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading panel-font ">
+                            <i class="fa fa-thumb-tack"></i> Temas recientes
+                        </div>
+                        <div  class="list-group-item">
+                            <ul class="media-list">
+                                <li ng-repeat="latestPost in aryLatestPost" class="media">
+                                    <a class="pull-left" ng-href="/#/group-post/{{latestPost._id}}">
+                                        <img class="media-object img-circle" ng-src="{{latestPost.ref_group.ref_image.image_small}}" height="64" width="64">
+                                    </a>
+                                    <a class="media-body" ng-href="/#/group-post/{{latestPost._id}}">
+                                        <h1 class="media-heading">
+                                            <span class="label label-default">{{latestPost.ref_group.title}}</span>
+                                            {{latestPost.title}}
+                                        </h1>
+                                        <p>{{latestPost.text}}</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7 no-padding p-right">
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-font ">
+                                <i class="fa fa-child"></i> Nuevos grupos
+                            </div>
+                            <div  class="list-group-item">
+                                <ul class="media-list">
+                                    <li ng-repeat="latestGroup in aryLatestGroup" class="media">
+                                        <a class="pull-left" href="/#/group/{{latestGroup._id}}">
+                                            <img class="media-object img-circle" ng-src="{{latestGroup.ref_image.image_small}}" width="64" height="64">
+                                        </a>
+                                        <a class="media-body" href="/#/group/{{latestGroup._id}}">
+                                            <h1 class="media-heading">
+                                                <span class="label label-default">
+                                                    {{latestGroup.title}}
+                                                </span>
+                                            </h1>
+                                            <p>{{latestGroup.text}}</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-5 no-padding p-left">
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-font ">
+                                <i class="fa fa-comments-o"></i> Últimos comentarios
+                            </div>
+                            <div  class="list-group-item">
+                                <ul class="media-list">
+                                    <li ng-repeat="latestComment in aryLatestComment" class="media">
+                                        <a href="/#/group-post/{{latestComment.ref_group_post._id}}" class="media-body">
+                                            <p>
+                                                <i class="fa fa-quote-left fa-1"></i>
+                                                {{latestComment.text}}
+                                                <i class="fa fa-quote-right fa-1"></i>
+                                            </p>
+                                            <h1 class="media-heading pull-right">{{latestComment.ref_group_post.title}}</h1>
+                                        </a>
+                                        <div class="divider"> </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

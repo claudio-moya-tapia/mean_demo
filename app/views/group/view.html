@@ -1,0 +1,229 @@
+<div class="container grupos-content">
+    <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+
+        <div ng-controller="GroupMenu" ng-include="'group/menu'" class="row"></div>
+        <div class="row">
+            <div class="col-md-12 no-padding">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading panel-font ">
+                            <i class="fa fa-users"></i> Grupo
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+<br/>
+                                <div class="col-md-4">
+                                    <div class="thumbnail">
+                                        <img ng-src="{{group.ref_image.image_original}} " class="img-responsive">
+                                        <div class="caption">
+                                            <h1>{{group.title}}</h1>
+                                            <p>
+                                                <i class="fa fa-user"></i>
+                                                <span class="badge">{{group.total_member}}</span>
+                                                <i class="fa fa-file-text-o"></i>
+                                                <span class="badge">{{group.total_post}}</span>
+                                            </p>
+                                            <p>{{group.text}}</p>
+                                            <p ng-if="isOwner">
+                                                <a href="/#/group/edit/{{group._id}}" class="btn btn-info" role="button">
+                                                    <i class="fa fa-pencil-square-o"></i> Editar
+                                                </a>
+                                            </p>
+                                            <p ng-if="!isOwner">
+                                                <button ng-if="isMember" ng-click="actionGroupLeave()" class="btn btn-primary" role="button">
+                                                    <i class="fa fa-sign-out"></i> Abandonar
+                                                </button>
+                                                <button ng-if="!isMember" ng-click="actionGroupJoin()" class="btn btn-success" role="button">
+                                                    <i class="fa fa-sign-in"></i> Unirse
+                                                </button>
+                                                <a href="/#/group/{{group._id}}" class="btn btn-default" role="button">
+                                                    <i class="fa fa-eye"></i> Ver
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading panel-font">
+                                                <i class="fa fa-comments-o"></i> Últimos comentarios
+                                            </div>
+                                            <div  class="list-group-item">
+                                                <ul class="media-list">
+                                                    <li ng-repeat="latestComment in aryLatestComment" class="media">
+                                                        <a href="/#/group-post/{{latestComment.ref_group_post._id}}" class="media-body">
+                                                            <p>
+                                                                <i class="fa fa-quote-left fa-1"></i>
+                                                                {{latestComment.text}}
+                                                                <i class="fa fa-quote-right fa-1"></i>
+                                                            </p>
+                                                            <h1 class="media-heading pull-right">{{latestComment.ref_group_post.title}}</h1>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+
+                                    <div id="postear" class="row text-center"></div>
+                                    <div id="row">
+                                        <div class="row row-post">
+                                            <form id="fileupload" action="/upload" method="POST" enctype="multipart/form-data" 
+                                                  data-ng-controller="UploaderController"
+                                                  data-file-upload="options"
+                                                  data-ng-class="{'fileupload-processing': processing()}">
+                                                <div class="col-md-12 col-xs-12 no-padding">
+                                                    <ul class="nav nav-tabs text-center label-post">
+                                                        <!-- 
+                                                        <li role="presentation">
+                                                            <span class="btn btn-link btn-sm btn-block" ng-click="actionSetText()">
+                                                                <i class="fa fa-font fa-2x"></i>
+                                                                <br/> Texto
+                                                            </span>
+                                                        </li>
+                                                        -->
+                                                        <li role="presentation">
+                                                            <span class="btn btn-link btn-sm btn-block fileinput-button" ng-click="actionSetImage()">
+                                                                <i class="fa fa-refresh fa-spin fa-2x" ng-if="active() > 0"></i>
+                                                                <i class="fa fa-camera fa-2x" ng-if="active() == 0"></i>
+                                                                <br/> Imagen
+                                                                <input type="file" name="files[]" multiple ng-disabled="disabled">
+                                                            </span>
+                                                        </li>
+                                                        <li role="presentation">
+                                                            <span class="btn btn-link btn-sm btn-block" ng-click="actionSetVideo()">
+                                                                <i class="fa fa-video-camera fa-2x"></i>
+                                                                <br/>Video
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </form>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <input ng-model="postNew.title" type="text" class="form-control" value="" placeholder="Ingresa un titulo" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <textarea ng-model="postNew.text" class="form-control" rows="4" cols="50" placeholder="¿Que te gustaria compartir?"></textarea>
+                                                </div>
+                                                <div class="form-group" ng-if="showVideo">
+                                                    <input type="text" class="form-control" ng-model="youtube.url" placeholder="https://www.youtube.com/watch?v=y573MTx0v20" />
+                                                    <br>
+                                                    <youtube-video ng-if="youtube.url != ''" video-url="youtube.url" player-width="'100%'" player-height="'300px'"></youtube-video>
+                                                </div>
+                                                <div class="form-group" id="box_wall_image">
+                                                    <div class="pull-left btn btn-default" ng-repeat="(key, file) in aryFiles" style="height: 80px">
+                                                        <img ng-src="{{file.smallUrl}}" class="ng-image-uploaded" style="max-width: 100px; max-height: 70px" alt="">
+                                                        <button type="button" class="btn btn-default" ng-click="removeFile(key)">
+                                                            <span class="glyphicon glyphicon-remove-circle"></span>
+                                                        </button>
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <button class="btn btn-warning btn-buscar pull-right" ng-click="actionCheckPost()">Publicar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row row-post row-comentario">
+                                            <div class="row" ng-repeat="groupPost in aryGroupPost">
+                                                <div class="col-md-2 col-sm-3 hidden-xs">
+                                                    <div class="avatar center-block  ng-scope">
+                                                        <img ng-src="{{groupPost.ref_profile.ref_image.image_original}}" class="img-responsive img-circle">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10 col-sm-9 col-xs-12 no-padding">
+                                                    <div class="row user-profile ng-scope">
+                                                        <a href="/#/profile/{{groupPost.ref_profile._id}}">
+                                                            {{groupPost.ref_profile.first_name}} 
+                                                            <strong class="ng-binding">{{groupPost.ref_profile.last_name}}</strong>
+                                                        </a> |
+                                                        <a href="/#/group-post/{{groupPost._id}}">
+                                                            <i class="fa fa-clock-o"></i> 
+                                                        </a>
+                                                        <small class="ng-binding">{{groupPost.date_updated | date:'medium'}}</small>
+                                                    </div>
+                                                    <div class="row post-box-muro"> 
+                                                        <div class="row post-text">
+                                                            <h1>{{groupPost.title}}</h1>
+                                                            <div ng-bind-html="groupPost.text | htmlEncode"></div>
+                                                            <youtube-video ng-if="groupPost.ref_video != ''" video-url="groupPost.ref_video.url" player-width="'100%'" player-height="'300px'"></youtube-video>
+                                                        </div>
+                                                        <div class="row swipeboxExample">
+                                                            <a ng-repeat="postImg in groupPost.ref_image" ng-href="{{postImg.image_original}}" target="_blank">
+                                                                <img ng-src="{{postImg.image_medium}}" class="img-responsive ng-justify-gallery">
+                                                            </a>
+                                                        </div> 
+                                                    </div>
+                                                    <div class="col-md-12 col-xs-12 text-btn-post">
+                                                        <ul class="nav nav-tabs  ">
+                                                            <li role="presentation">
+                                                                <button class="btn btn-link btn-sm btn-block ng-binding">
+                                                                    <i class="fa fa-comment fa-2x"></i>
+                                                                    {{groupPost.ref_comment.length > 0 ? groupPost.ref_comment.length : ''}}
+                                                                </button>
+                                                            </li>
+                                                            <li role="presentation">
+                                                                <button class="btn btn-link btn-sm btn-block" ng-click="actionShare(groupPost._id)">
+                                                                    <i class="fa fa-share-alt fa-2x"></i> 
+                                                                    {{groupPost.total_share.length > 0 ? groupPost.total_share.length : ''}}
+                                                                </button>
+                                                            </li>
+                                                            <li role="presentation">
+                                                                <button class="btn btn-link btn-sm btn-block ng-binding" ng-click="actionAddLike(groupPost)">
+                                                                    <i class="fa fa-thumbs-up fa-2x"></i>
+                                                                    {{groupPost.ref_post_like.length > 0 ? groupPost.ref_post_like.length : ''}}
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-12 col-xs-12 subcomments" ng-repeat="comment in groupPost.ref_comment">
+                                                        <div class="col-md-2 col-xs-3  ">
+                                                            <div class="avatar center-block">
+                                                                <img ng-src="{{comment.ref_profile.ref_image.image_original}}" class="img-responsive img-circle">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-10 col-xs-9 padding-subcomment">
+                                                            <div class="row user-profile">
+                                                                {{comment.ref_profile.first_name}} 
+                                                                <strong>{{comment.ref_profile.last_name}}</strong> | 
+                                                                <i class="fa fa-clock-o"></i> 
+                                                                <small>{{comment.date_created | date:'medium'}}</small>
+                                                            </div>
+                                                            <div class="row post-comment">{{comment.text}}</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row post-subcomment">
+                                                        <div class="col-md-8">
+                                                            <form role="form" class="ng-pristine ng-valid">
+                                                                <div class="form-group">
+                                                                    <input ng-model="commentNew[groupPost._id].text" ng-enter="actionAddComment(groupPost, commentNew[groupPost._id])" class="form-control ng-pristine ng-valid" placeholder="Escribe comentario" type="text">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button class="btn btn-block btn-warning btn-orange" ng-click="actionAddComment(groupPost, commentNew[groupPost._id])">Comentar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div ng-if="infiniteScroll == true" infinite-scroll="actionLoadMore()" infinite-scroll-distance="1"></div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

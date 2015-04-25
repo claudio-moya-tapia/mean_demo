@@ -1,0 +1,28 @@
+a {
+    color: black;
+}
+
+.fa-hover{
+    margin: 5px;
+}
+
+.panel .panel-body{
+    padding:20px;
+}
+
+.ta-scroll-window.form-control ol{
+    padding-left: 5px;
+}
+
+.ta-scroll-window.form-control ol {
+    margin-left: 15px;
+}
+
+.ta-scroll-window.form-control ol li{
+    list-style: decimal;
+}
+
+.list {
+    list-style: none outside none;
+    margin: 10px 0 30px;
+}

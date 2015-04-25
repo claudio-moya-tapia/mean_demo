@@ -1,0 +1,64 @@
+<div ng-controller="FriendList" class="container">
+    <div ng-controller="ProfileShared" ng-include="'profile/shared'" class="col-md-4 col-sm-4 col-xs-5 hidden-xs sidebar padding-sidebar no-padding"></div>
+
+    <div class="col-md-8 col-sm-7 col-xs-12 no-padding">
+
+        <div class="row muro-pattern no-padding">
+            <div class="elmuro">amiGos</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 margin-search pull-right">
+                <div class="input-group custom-search-form ">
+                    <input ng-model="searchFriend.name" ng-change="actionSearch()" ng-enter="actionSearch()" placeholder="Buscar personas" type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="actionSearch()">
+                            <span class="glyphicon glyphicon-search" ng-if="!searchFriendQueueBusy"></span>
+                            <i class="fa fa-refresh fa-spin" ng-if="searchFriendQueueBusy"></i>
+                        </button>
+                    </span>
+                </div><!-- /input-group -->
+            </div>
+        </div>
+        <div class="row">
+
+            <div ng-repeat="friend in aryFriend" class="col-md-6 col-sm-6 col-xs-12">
+                <div class="well well-md min-height-friends">
+                    <div class="media">
+                        <a class="pull-left" href="/#/profile/{{friend._id}}">
+                            <img ng-src="{{friend.ref_image.image_original}}" class="thumbnail thumbnail-amigos">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">
+                                <a href="/#/profile/{{friend._id}}">{{friend.full_name}}</a>
+                            </h4>
+                            <p>
+                                <span class="label label-link gray-border">{{friend.total_post}} Posts</span> 
+                                <span class="label label-link gray">{{friend.total_friend}} Amigos</span>
+                            </p>
+                            <p ng-if="friend._id != myProfile._id">
+                                <button class="btn btn-xs btn-success">
+                                    <span class="glyphicon glyphicon-comment"></span> Mensaje
+                                </button>
+                                <button class="btn btn-xs btn-primary" ng-click="actionAdd(friend)" ng-if="myProfile.ref_profile_friend.indexOf(friend._id) == -1">
+                                    <span class="glyphicon glyphicon-user"></span> Agregar
+                                </button>
+                                <button class="btn btn-xs btn-danger" ng-click="actionDelete(friend)" ng-if="myProfile.ref_profile_friend.indexOf(friend._id) != -1">
+                                    <span class="glyphicon glyphicon-ban-circle"></span> Eliminar
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="searchQueueBusy">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-default btn-lg">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </button>
+                </div>
+            </div>
+            <br>
+            <div infinite-scroll="actionLoadMore()" infinite-scroll-distance="1"></div>
+        </div>
+    </div>
+</div>

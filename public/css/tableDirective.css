@@ -1,0 +1,7 @@
+.ng-table th{
+    cursor: pointer;
+}
+
+#select-items-perpage{
+    width: 50px;
+}
